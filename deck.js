@@ -8,19 +8,16 @@
  
 var memodeck = (function (onoff) {
 	'use strict';
-	var apiCode = 'MeMoDeCk';
+	var containerId = 'cntnr';
 	var ss = '';
 	
 	function memodeck() {
-		var n = 'test 2';
-	    memodeck.ss = n;
-		
+
 		return self;
 	}
 
 	if (onoff) {
 		memodeck();
-		alert(memodeck.ss);
 	}
 	
 	return memodeck;
