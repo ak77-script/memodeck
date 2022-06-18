@@ -9,17 +9,17 @@
 var memodeck = (function () {
 	'use strict';
 	var apiCode = 'MeMoDeCk';
-	
+	var ss = '';
 	
 	function memodeck() {
 		var n = 'test 2';
-		memodeck.n = n;
+	    memodeck.ss = n;
 		
 		return self;
 	}
 
 	memodeck();
-	alert(memodeck.n);
+	alert(memodeck.ss);
 
 	return memodeck;
 })();
