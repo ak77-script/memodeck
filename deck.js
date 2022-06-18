@@ -6,20 +6,20 @@
 
 'use strict';
  
-var deck = (function () {
+var memodeck = (function () {
 	'use strict';
-	var n = 'test';
+	var apiCode = 'MeMoDeCk';
 	
 	
-	function deck() {
+	function memodeck() {
 		var n = 'test 2';
-		deck.n = n;
+		memodeck.n = n;
 		
 		return self;
 	}
 
-	deck();
-	alert(deck.n);
+	memodeck();
+	alert(memodeck.n);
 
-	return deck;
+	return memodeck;
 })();
