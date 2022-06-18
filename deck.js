@@ -6,7 +6,7 @@
 
 'use strict';
  
-var memodeck = (function () {
+var memodeck = (function (onoff) {
 	'use strict';
 	var apiCode = 'MeMoDeCk';
 	var ss = '';
