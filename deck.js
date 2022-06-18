@@ -18,8 +18,10 @@ var memodeck = (function (onoff) {
 		return self;
 	}
 
-	memodeck();
-	alert(memodeck.ss);
-
+	if (onoff) {
+		memodeck();
+		alert(memodeck.ss);
+	}
+	
 	return memodeck;
 })(true);
