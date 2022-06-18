@@ -22,4 +22,4 @@ var memodeck = (function () {
 	alert(memodeck.ss);
 
 	return memodeck;
-})();
+})(true);
