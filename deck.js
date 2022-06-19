@@ -3,21 +3,25 @@
  */
 
 // https://developer.mozilla.org/ru/docs/Web/JavaScript/Guide/Functions
-// https://ru.vuejs.org/v2/guide/index.html
 
  
-var memodeck = (function (onoff) {
+let memodeck = (function (onoff) {
+	// ссылка на d3.js
+	// вся работа с DOM осуществляется через библиотеку Data Driven Documents 
+	const _dom = d3;
 
-	var containerId = 'cntnr';
-	var getstartbtnId = 'getStart';
+	let containerId = 'cntnr';
+	let getstartbtnId = 'getStart';
 	
 	function memodeck() {
-
+		// инициализация
+		let self = this;
+		self.d = _dom;
 		return self;
 	}
 
 	if (onoff) {
-		memodeck();
+		let md = memodeck();
 	}
 	
 	return memodeck;
