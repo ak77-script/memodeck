@@ -30,7 +30,7 @@ let memodeck = (function (onoff) {
 		self.main = _main;
 		self.footer = _footer;
 		
-		_main.style("visibility", "hidden");
+		_main.style("visibility", "hidden"); // hidden / visible
 
 		return self;
 	}
