@@ -35,6 +35,7 @@ let memodeck = (function (onoff) {
 
 	if (onoff) {
 		let md = memodeck();
+		md.main.hide();
 	}
 	
 	return memodeck;
