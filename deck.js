@@ -17,7 +17,12 @@ let memodeck = (function (onoff) {
 		// инициализация
 		let self = this;
 		self.d = _dom;
-		let _main = self.d.select('main');
+		const _body = seld.d.select('body');
+		const _header = _body.select('header');
+		const _nav = _body.select('nav');
+		const _main = _body.select('main');
+		const _footer = _body.select('footer');
+		
 		
 		return self;
 	}
