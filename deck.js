@@ -17,7 +17,7 @@ let memodeck = (function (onoff) {
 		// инициализация
 		let self = this;
 		self.d = _dom;
-		let _cntnr = self.d.select(containerId);
+		let _main = self.d.select('main');
 		
 		return self;
 	}
