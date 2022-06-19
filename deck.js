@@ -18,7 +18,7 @@ let memodeck = (function (onoff) {
 		let self = this;
 		self.d = _dom;
 
-		const _body = seld.d.select('body');
+		const _body = self.d.select('body');
 		const _header = _body.select('header');
 		const _nav = _body.select('nav');
 		const _main = _body.select('main');
@@ -30,12 +30,14 @@ let memodeck = (function (onoff) {
 		self.main = _main;
 		self.footer = _footer;
 		
+		_main.style("visibility", "hidden");
+
 		return self;
 	}
 
 	if (onoff) {
 		let md = memodeck();
-		md.main.hide();
+		//md.main.hide();
 	}
 	
 	return memodeck;
