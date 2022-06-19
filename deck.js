@@ -10,7 +10,7 @@ let memodeck = (function (onoff) {
 	// вся работа с DOM осуществляется через библиотеку Data Driven Documents 
 	const _dom = d3;
 
-	let containerId = 'cntnr';
+	let containerId = 'main';
 	let getstartbtnId = 'getStart';
 	
 	function memodeck() {
