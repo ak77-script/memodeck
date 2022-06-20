@@ -29,17 +29,19 @@ let memodeck = (function (onoff) {
 		self.main = _main;
 		self.footer = _footer;
 		
+		// show / hide Greetings
 		let showGreetings = function(onoff = true) {
+			let greetings = _main.select('#greetings');
 			if (onoff) {
-				_main.select('#greetings').style("visibility", "hidden");
+				greetings.style("visibility", "hidden");
 			} else {
-				_main.select('#greetings').style("visibility", "visible");
+				greetings.style("visibility", "visible");
 			}
 		}
 
 		showGreetings(false);
 		self.showGreetings = showGreetings();
-		
+
 		return self;
 	}
 
