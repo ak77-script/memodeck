@@ -29,7 +29,7 @@ let memodeck = (function (onoff) {
 		self.main = _main;
 		self.footer = _footer;
 		
-		// hide Greetings
+		// getStart
 		_main.select('#getStart').on('click', function () {
 			_main.select('#greetings').style("visibility", "hidden"); //visible
 		});
