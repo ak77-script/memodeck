@@ -3,7 +3,6 @@
  */
 
 // https://developer.mozilla.org/ru/docs/Web/JavaScript/Guide/Functions
-
  
 let memodeck = (function (onoff) {
 	// ссылка на d3.js
@@ -30,8 +29,17 @@ let memodeck = (function (onoff) {
 		self.main = _main;
 		self.footer = _footer;
 		
-		_main.style("visibility", "hidden"); // hidden / visible
+		let showGreetings = function(onoff = true) {
+			if (onoff) {
+				_main.select('#greetings').style("visibility", "hidden");
+			} else {
+				_main.select('#greetings').style("visibility", "visible");
+			}
+		}
 
+		showGreetings(false);
+		self.showGreetings = showGreetings();
+		
 		return self;
 	}
 
