@@ -8,6 +8,7 @@
     <title>Запомни Колоду</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link href="deckofcards.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
   <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -66,9 +67,34 @@
     <link href="cover.css" rel="stylesheet">
   </head>
   <body class="d-flex h-100 text-center text-white bg-dark">
+    <div class="offcanvas offcanvas-top bg-dark shadow" id="offcanvas_top" style="z-index: 10000;">
+      <div class="offcanvas-header">
+        <h1 class="offcanvas-title">Колода</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+      </div>
+      <div class="offcanvas-body">
+        <div class="m-6">
+          <div class="btn-group" role="group" aria-label="suits">
+            <input type="checkbox" class="btn-check" id="btncheckClub">
+            <label class="btn btn-outline-light" for="btncheckClub"><i class="bi bi-suit-club-fill"></i></label>
+          
+            <input type="checkbox" class="btn-check" id="btncheckDiamond">
+            <label class="btn btn-outline-light" for="btncheckDiamond"><i class="bi bi-suit-diamond-fill"></i></label>
+          
+            <input type="checkbox" class="btn-check" id="btncheckHeart">
+            <label class="btn btn-outline-light" for="btncheckHeart"><i class="bi bi-suit-heart-fill"></i></label>
+
+            <input type="checkbox" class="btn-check" id="btncheckSpade">
+            <label class="btn btn-outline-light" for="btncheckSpade"><i class="bi bi-suit-spade-fill"></i></label>
+          </div>
+        </div>        
+
+      </div>
+    </div>
+    
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
       
-      <header class="mb-auto bg-dark rounded shadow" style="z-index: 9999;">
+      <header class="mb-auto bg-dark rounded-3 shadow" style="z-index: 9999;">
       <div>
         <h3 class="float-md-start ms-3 me-3 p-1">Запомни Колоду</h3>
         <nav class="nav nav-masthead justify-content-center float-md-end p-3">
@@ -106,6 +132,10 @@
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-bottom rounded shadow m-3">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">Fixed bottom</a>
+
+        <button class="btn btn-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas_top">
+          <i class="bi bi-sliders"></i>
+        </button>
       </div>
     </nav>
 

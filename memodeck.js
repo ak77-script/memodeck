@@ -1,5 +1,7 @@
 const origdeckon = true;
 const memodeckon = true;
+  
+// https://getbootstrap.com/docs/5.0/components/buttons/
 
 let origdeck = (function (onoff) {
 	var prefix = Deck.prefix;
