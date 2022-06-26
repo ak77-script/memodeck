@@ -38,7 +38,7 @@ let origdeck = (function (onoff) {
 			}
 		} else if (i % 13 === 12) {
 			if (!kingsClicked) {
-			return
+			return;
 			}
 			kingsClicked[i] = true;
 			if (kingsClicked.filter(function (king) {

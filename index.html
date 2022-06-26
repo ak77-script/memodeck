@@ -67,13 +67,14 @@
   </head>
   <body class="d-flex h-100 text-center text-white bg-dark">
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-      <header class="mb-auto">
+      
+      <header class="mb-auto bg-dark rounded shadow" style="z-index: 9999;">
       <div>
-        <h3 class="float-md-start mb-0">Запомни Колоду</h3>
-        <nav class="nav nav-masthead justify-content-center float-md-end">
-        <a class="nav-link fw-bold py-1 px-0 active" aria-current="page" href="#">Главная</a>
-        <a class="nav-link fw-bold py-1 px-0" href="#">Описание</a>
-        <a class="nav-link fw-bold py-1 px-0" href="#">Контакты</a>
+        <h3 class="float-md-start ms-3 me-3 p-3">Запомни Колоду</h3>
+        <nav class="nav nav-masthead justify-content-center float-md-end p-3">
+          <a class="nav-link fw-bold py-1 px-0 active" aria-current="page" href="#">Главная</a>
+          <a class="nav-link fw-bold py-1 px-0" href="#">Описание</a>
+          <a class="nav-link fw-bold py-1 px-0" href="#">Контакты</a>
         </nav>
       </div>
       </header>
@@ -86,16 +87,13 @@
           <a id="getStart" href="#" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Приступить</a>
           </p>
         </div>
-        <div id="card" class="card bg-success">
+        <div id="card" class="card bg-success overflow-hidden">
           <div class="card-body">
             <div id='container' class="container" style="height: 15rem;">
               <!--<div style="position: absolute; top: 0; bottom: 0; left: 0; right: 0; margin: auto; width: 0px; height: 0px;">
                 <div style="cursor: move; z-index: 52; transform:scale(2,2);" class="playing-card spades rank1"><div class="face"></div></div>
               </div>-->
             </div>
-          </div>
-          <div class="card-footer">
-            <p>Footer</p>
           </div>
         </div>
       </main>
@@ -105,8 +103,14 @@
       </footer>
     </div>
 
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-bottom rounded shadow m-3">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Fixed bottom</a>
+      </div>
+    </nav>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-	<script src="https://d3js.org/d3.v7.min.js"></script>
+	  <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
     <script src="js/deck.js"></script>
     <script type="text/javascript" src="memodeck.js"></script>
