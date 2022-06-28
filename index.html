@@ -6,8 +6,9 @@
 	<meta name="description" content="">
 	<meta name="author" content="Kuznetsov Alexey Vasil`evich">
     <title>Запомни Колоду</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <link href="deckofcards.css" rel="stylesheet">
+    
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+	<link href="deckofcards.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
   <style>
       .bd-placeholder-img {
@@ -67,26 +68,142 @@
     <link href="cover.css" rel="stylesheet">
   </head>
   <body class="d-flex h-100 text-center text-white bg-dark">
-    <div class="offcanvas offcanvas-top bg-dark shadow" id="offcanvas_top" style="z-index: 10000;">
+    <div class="offcanvas offcanvas-end bg-dark" tabindex="-1" id="offcanvas_end" style="z-index: 10000;">
       <div class="offcanvas-header">
         <h1 class="offcanvas-title">Колода</h1>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
       </div>
       <div class="offcanvas-body">
-        <div class="m-6">
-          <div class="btn-group" role="group" aria-label="suits">
-            <input type="checkbox" class="btn-check" id="btncheckClub">
-            <label class="btn btn-outline-light" for="btncheckClub"><i class="bi bi-suit-club-fill"></i></label>
-          
-            <input type="checkbox" class="btn-check" id="btncheckDiamond">
-            <label class="btn btn-outline-light" for="btncheckDiamond"><i class="bi bi-suit-diamond-fill"></i></label>
-          
-            <input type="checkbox" class="btn-check" id="btncheckHeart">
-            <label class="btn btn-outline-light" for="btncheckHeart"><i class="bi bi-suit-heart-fill"></i></label>
 
-            <input type="checkbox" class="btn-check" id="btncheckSpade">
-            <label class="btn btn-outline-light" for="btncheckSpade"><i class="bi bi-suit-spade-fill"></i></label>
-          </div>
+        <div class="m-6">
+
+	  		<table class="table text-light bg-dark">
+			<!-- https://codepen.io/bbodine1/pen/DqdMRy -->
+			<thead>
+				<tr>
+					<th scope="col" colspan="2" rowspan="2" class="bg-secondary align-middle">
+						<input type="checkbox" class="form-check-input" name="checkAll" id="checkAll" value="">
+					</th>
+					<th scope="col" class="bg-danger"><i class="bi bi-suit-spade-fill"></i></th>
+					<th scope="col" class="bg-danger"><i class="bi bi-suit-heart-fill"></i></th>
+					<th scope="col" class="bg-danger"><i class="bi bi-suit-club-fill"></i></th>
+					<th scope="col" class="bg-danger"><i class="bi bi-suit-diamond-fill"></i></th>
+				</tr>
+				<tr>
+					<th scope="col" class="bg-danger"><input class="form-check-input" type="checkbox" value="" id="checkSpade"></th>
+					<th scope="col" class="bg-danger"><input class="form-check-input" type="checkbox" value="" id="checkHeart"></th>
+					<th scope="col" class="bg-danger"><input class="form-check-input" type="checkbox" value="" id="checkClub"></th>
+					<th scope="col" class="bg-danger"><input class="form-check-input" type="checkbox" value="" id="checkDiamond"></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th scope="row" class="bg-success">Т</th>
+					<th scope="row" class="bg-success"><input class="form-check-input" type="checkbox" value="" id="check1"></th>
+					<td><input class="form-check-input" type="checkbox" value="" id="check_card_01"></td>
+					<td><input class="form-check-input" type="checkbox" value="" id="check_card_14"></td>
+					<td><input class="form-check-input" type="checkbox" value="" id="check_card_27"></td>
+					<td><input class="form-check-input" type="checkbox" value="" id="check_card_40"></td>
+				</tr>
+				<tr>
+					<th scope="row" class="bg-success">2</th>
+					<th scope="row" class="bg-success"><input class="form-check-input" type="checkbox" value="" id="check2"></th>
+					<td><input class="form-check-input" type="checkbox" value="" id="check_card_02"></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<th scope="row" class="bg-success">3</th>
+					<th scope="row" class="bg-success"><input class="form-check-input" type="checkbox" value="" id="check3"></th>
+					<td><input class="form-check-input" type="checkbox" value="" id="check_card_03"></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<th scope="row" class="bg-success">4</th>
+					<th scope="row" class="bg-success"><input class="form-check-input" type="checkbox" value="" id="check4"></th>
+					<td><input class="form-check-input" type="checkbox" value="" id="check_card_04"></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<th scope="row" class="bg-success">5</th>
+					<th scope="row" class="bg-success"><input class="form-check-input" type="checkbox" value="" id="check5"></th>
+					<td><input class="form-check-input" type="checkbox" value="" id="check_card_05"></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<th scope="row" class="bg-success">6</th>
+					<th scope="row" class="bg-success"><input class="form-check-input" type="checkbox" value="" id="check6"></th>
+					<td><input class="form-check-input" type="checkbox" value="" id="check_card_06"></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<th scope="row" class="bg-success">7</th>
+					<th scope="row" class="bg-success"><input class="form-check-input" type="checkbox" value="" id="check7"></th>
+					<td><input class="form-check-input" type="checkbox" value="" id="check_card_07"></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<th scope="row" class="bg-success">8</th>
+					<th scope="row" class="bg-success"><input class="form-check-input" type="checkbox" value="" id="check8"></th>
+					<td><input class="form-check-input" type="checkbox" value="" id="check_card_08"></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<th scope="row" class="bg-success">9</th>
+					<th scope="row" class="bg-success"><input class="form-check-input" type="checkbox" value="" id="check9"></th>
+					<td><input class="form-check-input" type="checkbox" value="" id="check_card_09"></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<th scope="row" class="bg-success">10</th>
+					<th scope="row" class="bg-success"><input class="form-check-input" type="checkbox" value="" id="check10"></th>
+					<td><input class="form-check-input" type="checkbox" value="" id="check_card_10"></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<th scope="row" class="bg-success">В</th>
+					<th scope="row" class="bg-success"><input class="form-check-input" type="checkbox" value="" id="check11"></th>
+					<td><input class="form-check-input" type="checkbox" value="" id="check_card_11"></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<th scope="row" class="bg-success">Д</th>
+					<th scope="row" class="bg-success"><input class="form-check-input" type="checkbox" value="" id="check12"></th>
+					<td><input class="form-check-input" type="checkbox" value="" id="check_card_12"></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<th scope="row" class="bg-success">К</th>
+					<th scope="row" class="bg-success"><input class="form-check-input" type="checkbox" value="" id="check13"></th>
+					<td><input class="form-check-input" type="checkbox" value="" id="check_card_13"></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+
         </div>        
 
       </div>
@@ -133,17 +250,24 @@
       <div class="container-fluid">
         <a class="navbar-brand" href="#">Fixed bottom</a>
 
-        <button class="btn btn-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas_top">
+        <button class="btn btn-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas_end">
           <i class="bi bi-sliders"></i>
         </button>
       </div>
     </nav>
-
-    <script src="js/deck.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
-	  <script src="https://d3js.org/d3.v7.min.js"></script>
-
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>   
+	
+	<script src="https://d3js.org/d3.v7.min.js"></script>
+	
+	<script src="js/deck.js"></script>
+    <!--
+	
+	
+	
+	-->
     <script type="text/javascript" src="memodeck.js"></script>
   </body>
 </html>
