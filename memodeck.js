@@ -1,7 +1,35 @@
 const origdeckon = true;
 const memodeckon = true;
-  
+const $d = document;
+
+let _checkAll = true;
+let _checkSpade = true;
+let _checkHeart = true;
+let _checkClub = true;
+let _checkDiamond = true;
+
+$d.getElementById('checkAll').checked = _checkAll;
+$d.getElementById('checkSpade').checked = _checkSpade;
+$d.getElementById('checkHeart').checked = _checkHeart;
+$d.getElementById('checkClub').checked = _checkClub;
+$d.getElementById('checkDiamond').checked = _checkDiamond;
 // https://getbootstrap.com/docs/5.0/components/buttons/
+
+let $checkAll = document.getElementById('checkAll');
+$checkAll.addEventListener('click',function(){
+	_checkAll=!_checkAll;
+	_checkSpade = _checkAll;
+	_checkHeart = _checkAll;
+	_checkClub = _checkAll;
+	_checkDiamond = _checkAll;
+
+	$d.getElementById('checkSpade').checked = _checkSpade;
+	$d.getElementById('checkHeart').checked = _checkHeart;
+	$d.getElementById('checkClub').checked = _checkClub;
+	$d.getElementById('checkDiamond').checked = _checkDiamond;
+	
+	console.log('checkAll: ' + _checkAll);
+});
 
 let origdeck = (function (onoff) {
 	var prefix = Deck.prefix;
