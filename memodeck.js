@@ -1,6 +1,21 @@
 const origdeckon = true;
 const memodeckon = true;
+
+// alias for addEventListener
+EventTarget.prototype.on = EventTarget.prototype.addEventListener;
+
+// alias for document
 const $d = document;
+
+// alias for window
+const $w = window;
+
+// aliases for querySelector
+const $ = document.querySelector.bind(document)
+const $$ = document.querySelectorAll.bind(document)
+
+//$('div').style.color = 'blue'
+//$$('div').forEach(div => div.style.background = 'orange')
 
 let _checkAll = true;
 let _checkSpade = true;
@@ -8,29 +23,30 @@ let _checkHeart = true;
 let _checkClub = true;
 let _checkDiamond = true;
 
-$d.getElementById('checkAll').checked = _checkAll;
-$d.getElementById('checkSpade').checked = _checkSpade;
-$d.getElementById('checkHeart').checked = _checkHeart;
-$d.getElementById('checkClub').checked = _checkClub;
-$d.getElementById('checkDiamond').checked = _checkDiamond;
+$('#checkAll').checked = _checkAll;
+$('#checkSpade').checked = _checkSpade;
+$('#checkHeart').checked = _checkHeart;
+$('#checkClub').checked = _checkClub;
+$('#checkDiamond').checked = _checkDiamond;
 // https://getbootstrap.com/docs/5.0/components/buttons/
 
-let $checkAll = document.getElementById('checkAll');
-$checkAll.addEventListener('click',function(){
+let $checkAll = $('#checkAll');
+$checkAll.on('click',function(){
 	_checkAll=!_checkAll;
 	_checkSpade = _checkAll;
 	_checkHeart = _checkAll;
 	_checkClub = _checkAll;
 	_checkDiamond = _checkAll;
 
-	$d.getElementById('checkSpade').checked = _checkSpade;
-	$d.getElementById('checkHeart').checked = _checkHeart;
-	$d.getElementById('checkClub').checked = _checkClub;
-	$d.getElementById('checkDiamond').checked = _checkDiamond;
+	$('#checkSpade').checked = _checkSpade;
+	$('#checkHeart').checked = _checkHeart;
+	$('#checkClub').checked = _checkClub;
+	$('#checkDiamond').checked = _checkDiamond;
 	
 	console.log('checkAll: ' + _checkAll);
 });
 
+// original deck
 let origdeck = (function (onoff) {
 	var prefix = Deck.prefix;
 
