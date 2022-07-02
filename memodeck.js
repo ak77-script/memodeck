@@ -1,8 +1,12 @@
 const origdeckon = true;
-const memodeckon = true;
+const memodeckon = false;
 
 // alias for addEventListener
 EventTarget.prototype.on = EventTarget.prototype.addEventListener;
+
+// alias for HTMLElement methods
+HTMLElement.prototype.find = HTMLElement.prototype.querySelector;
+HTMLElement.prototype.findAll = HTMLElement.prototype.querySelectorAll;
 
 // alias for document
 const $d = document;
@@ -10,40 +14,451 @@ const $d = document;
 // alias for window
 const $w = window;
 
+// alias for getElementById
+const ById = $d.getElementById;
+
+// alias for getElementsByClassName 
+const ByClass = $d.getElementsByClassName;
+
+// alias for 
+const ByTagName = $d.getElementsByTagName;
+
 // aliases for querySelector
-const $ = document.querySelector.bind(document)
-const $$ = document.querySelectorAll.bind(document)
+$d.find = $d.querySelector;
+$d.findAll = $d.querySelectorAll;
+//const $ = document.querySelector.bind(document)
+//const $$ = document.querySelectorAll.bind(document)
 
 //$('div').style.color = 'blue'
 //$$('div').forEach(div => div.style.background = 'orange')
 
-let _checkAll = true;
-let _checkSpade = true;
-let _checkHeart = true;
-let _checkClub = true;
-let _checkDiamond = true;
+const _chk = new Map([
+	['checkAll', true],
+	['checkSpade', true],
+	['checkHeart', true],
+	['checkClub', true],
+	['checkDiamond', true],
+	['check1', true],
+	['check2', true],
+	['check3', true],
+	['check4', true],
+	['check5', true],
+	['check6', true],
+	['check7', true],
+	['check8', true],
+	['check9', true],
+	['check10', true],
+	['check11', true],
+	['check12', true],
+	['check13', true],
+	['check_card_1', true],
+	['check_card_2', true],
+	['check_card_3', true],
+	['check_card_4', true],
+	['check_card_5', true],
+	['check_card_6', true],
+	['check_card_7', true],
+	['check_card_8', true],
+	['check_card_9', true],
+	['check_card_10', true],
+	['check_card_11', true],
+	['check_card_12', true],
+	['check_card_13', true],
+	['check_card_14', true],
+	['check_card_15', true],
+	['check_card_16', true],
+	['check_card_17', true],
+	['check_card_18', true],
+	['check_card_19', true],
+	['check_card_20', true],
+	['check_card_21', true],
+	['check_card_22', true],
+	['check_card_23', true],
+	['check_card_24', true],
+	['check_card_25', true],
+	['check_card_26', true],
+	['check_card_27', true],
+	['check_card_28', true],
+	['check_card_29', true],
+	['check_card_30', true],
+	['check_card_31', true],
+	['check_card_32', true],
+	['check_card_33', true],
+	['check_card_34', true],
+	['check_card_35', true],
+	['check_card_36', true],
+	['check_card_37', true],
+	['check_card_38', true],
+	['check_card_39', true],
+	['check_card_40', true],
+	['check_card_41', true],
+	['check_card_42', true],
+	['check_card_43', true],
+	['check_card_44', true],
+	['check_card_45', true],
+	['check_card_46', true],
+	['check_card_47', true],
+	['check_card_48', true],
+	['check_card_49', true],
+	['check_card_50', true],
+	['check_card_51', true],
+	['check_card_52', true]
+  ]);
 
-$('#checkAll').checked = _checkAll;
-$('#checkSpade').checked = _checkSpade;
-$('#checkHeart').checked = _checkHeart;
-$('#checkClub').checked = _checkClub;
-$('#checkDiamond').checked = _checkDiamond;
+/*
+Статья, в которой рассмотрим какие в JavaScript имеются способы создания ассоциативных массивов, а также основные приёмы работы с ними.
+Что такое ассоциативный массив?
+
+Ассоциативный массив – это массив, в котором обращение к значению осуществляется по ключу.
+
+При этом в качестве ключа используется не порядковый номер (индекс), а некоторая строка, которую мы устанавливаем сами.
+
+Таким образом представить ассоциативный массив можно как набор пар «ключ-значение». При этом каждое значение связано с определённым ключом.
+Ассоциативный массив в JavaScript
+
+Для того чтобы получить значение необходимо знать ключ.
+Способы создания ассоциативных массивов
+
+В JavaScript имеются обычные массивы. В них в качества ключа используется порядковый номер (индекс) элемента, а создаются они с использованием квадратных скобок или Array(). Эти массивы не могут использоваться в качестве ассоциативных.
+
+Создание ассоциативных массивов в JavaScript можно выполнить двумя разными способами:
+
+    с помощью объекта Map (появился в языке, начиная с версии ECMAScript 2015);
+    посредством объектов.
+
+Коллекция Map
+
+Map – это коллекция «ключ-значение», которую можно использовать для создания ассоциативных массивов.
+
+Map в отличие от объекта позволяет использовать в качестве ключей значения любых типов как примитивные, так и ссылочные.
+
+Создание пустой коллекции:
+
+// создание пустого ассоциативного массива
+const arr = new Map();
+
+Создании коллекции с инициализацией начальных значений:
+
+// создание ассоциативного массива и помещения в него трех пар «ключ-значение»
+const arr = new Map([
+  ['key1', 'value1'],
+  ['key2', 'value2'],
+  ['key3', 'value3']
+]);
+
+В этом примере строки «key1», «key2» и «key3» являются ключами, а «value1», «value2» и «value3» соответственно их значениями.
+
+Узнать количество элементов в массиве можно осуществить с помощью свойства size:
+
+arr.size; // 3
+
+Добавление элемента в массив (в экземпляр объекта Map) осуществляется с помощью метода set:
+
+// добавить в массив одну пару "ключ-значение"
+arr.set('key4','value4');
+
+// добавить в массив несколько пар "ключ-значение"
+arr.set('key5','value5');
+arr.set('key6','value6');
+// или так
+arr
+  .set('key5','value5')
+  .set('key6','value6');
+
+Если в массиве есть уже такой ключ, то произойдёт установка нового значения, которое будет связано с ним:
+
+arr.set('key1','new value');
+
+Получить значение по ключу выполняется с помощью метода get:
+
+// получить значение, ассоциированное с ключом 'key4'
+arr.get('key4'); // 'value4'
+
+Проверить есть ли ключ в массиве можно посредством метода has:
+
+// есть ли в массиве arr ключ key2
+arr.has('key2'); // true
+
+Удалить из ассоциативного массива (экземпляра объекта Map) элемент по имени ключа можно с помощью метода delete:
+
+arr.delete('key1'); // true
+
+Данный метод возвращает true, если данный ключ существовал в массиве, в противном случае он возвращает false.
+
+if (arr.delete('key1')) {
+  console.log('Запись с ключом "key1" удалена из массива!');
+} else {
+  console.log('Запись с ключом "key1" не найдена в массиве!');
+}
+
+Очистить массив (удалить все элементы) можно выполнить с помощью метода clear.
+
+arr.clear(); // очистим массив arr
+arr.size; // 0 (количество элементов)
+
+Перебор ассоциативного массива (объекта Map) обычно осуществляется с помощью цикла for...of. При этом итерацию можно организовать по ключам, значениям и записям ([key, values]).
+
+Перебор ключей можно осуществить посредством итерируемого объекта MapIterator, возвращаемым методом keys:
+
+for (let key of arr.keys()) {
+  console.log(key);
+}
+
+Для перебора значений можно воспользоваться итерируемым объектом MapIterator, возвращаемым посредством методом values:
+
+for (let value of arr.values()) {
+  console.log(value);
+}
+
+Перебор записей ассоциативного массива с использованием метода entries:
+
+for (let pair of arr.entries()) {
+  // pair - это массив [key, values]
+  console.log(pair[0]); // ключ
+  console.log(pair[1]); // значение
+  console.log(`Ключ = ${pair[0]}, значение = ${pair[1]}`);
+}
+
+Данный метод используется по умолчанию в for...of, поэтому его можно опустить:
+
+for (let pair of arr) {
+  console.log(`Ключ = ${pair[0]}, значение = ${pair[1]}`);
+}
+
+Кроме этого перебрать ассоциативный массив можно с помощью метода forEach.
+
+arr.forEach(function(value,key) {
+  console.log('key = ' + key +', value = ' + value);
+});
+
+
+Перебор ассоциативного массива (объекта Map) обычно осуществляется с помощью цикла for...of. При этом итерацию можно организовать по ключам, значениям и записям ([key, values]).
+
+Перебор ключей можно осуществить посредством итерируемого объекта MapIterator, возвращаемым методом keys:
+
+for (let key of arr.keys()) {
+  console.log(key);
+}
+
+Для перебора значений можно воспользоваться итерируемым объектом MapIterator, возвращаемым посредством методом values:
+
+for (let value of arr.values()) {
+  console.log(value);
+}
+
+Перебор записей ассоциативного массива с использованием метода entries:
+
+for (let pair of arr.entries()) {
+  // pair - это массив [key, values]
+  console.log(pair[0]); // ключ
+  console.log(pair[1]); // значение
+  console.log(`Ключ = ${pair[0]}, значение = ${pair[1]}`);
+}
+
+Данный метод используется по умолчанию в for...of, поэтому его можно опустить:
+
+for (let pair of arr) {
+  console.log(`Ключ = ${pair[0]}, значение = ${pair[1]}`);
+}
+
+Кроме этого перебрать ассоциативный массив можно с помощью метода forEach.
+
+arr.forEach(function(value,key) {
+  console.log('key = ' + key +', value = ' + value);
+});
+
+Преобразовать ассоциативный массив (объект Map) в JSON и обратно можно так:
+
+let arr = new Map([
+  ['question', 'Текст вопроса...'],
+  ['answer1', 'Ответ 1...'],
+  ['answer2', 'Ответ 2...'],
+]);
+// в JSON
+jsonStr = JSON.stringify([...arr]);
+// из JSON в Map
+mapArr = new Map(JSON.parse(jsonStr));
+
+Объект как ассоциативный массив
+
+В качестве ассоциативного массива можно использовать обычный объект.
+
+Создание пустого ассоциативного массива через объект:
+
+// посредством литерала объекта
+const arr1 = {};
+// с использованием стандартной функции-конструктора Object
+const arr2 = new Object();
+// через Object.create
+const arr3 = new Object.create(null);
+
+Заполнение ассоциативный массив значениями на этапе его создания:
+
+const myArray = {
+  'key1': 'value1',
+  'key2': 'value2',
+  ...
+}
+
+Добавление нового элемента (пары «ключ-значение»):
+
+// добавим строку «текстовое значение» с ключом «key1»
+arr['key1'] = 'текстовое значение';
+// добавить число 22 с ключом «key2»
+arr['key2'] = 22;
+
+Добавление нового элемента будет выполняться только в том случае, если данного ключа в нём нет. Если данный ключ уже существует, то указанное значение просто изменит существующее.
+
+В качестве значения можно использовать не только примитивные типы данных, но и ссылочные.
+
+В JavaScript для обращения к ключу можно использовать не только квадратные скобки, но и выполнять это через точку. Но это доступно только для ключей, имена которых отвечают правилам именования переменных.
+
+arr.key1 = 'текстовое значение';
+arr.key2 = 22;
+
+Получение значения ключа:
+
+console.log( myArray['key1'] );
+console.log( myArray['key2'] );
+console.log( myArray.key1 );
+console.log( myArray.key2 );
+
+Получить количество ключей (длину) можно так:
+
+const myArray = {'key1': 'value1', 'key12: 'value2', 'key3': 'value3'};
+// Используем keys, чтобы получить массив ключей. А затем с помощью length их длину
+Object.keys(myArray).length; // 3
+
+Удаление ключа выполняется с помощью оператора delete:
+
+delete myArray['key1'];
+
+Выполнить проверку (наличия) ключа можно так:
+
+const myArray = {'key1': 'value1', 'key2': 'value2'};
+// 1 способ - c использованием hasOwnProperty
+if (myArray.hasOwnProperty('key1')) {
+  console.log( 'Ключ key1 существует!' );
+} else {
+  console.log( 'Ключ key1 не существует!' );
+}
+
+// 2 способ - с использованием in
+if ('key1' in myArray) {
+  console.log( 'Ключ key1 есть в массиве!' );
+} else {
+  console.log( 'Ключ key1 нет в массиве!' );
+}
+
+Перебор ключей с помощью цикла for...in:
+
+// myArray - объект как ассоциативный массив
+for(key in myArray) {
+  console.log( `${key} = ${myArray[key]}` );
+}
+
+Преобразовать объект, используем в качестве ассоциативного массива, в JSON и обратно можно так:
+
+// ассоциативный массив
+const arr = {
+  key1: 'value1',
+  key2: 'value2',
+  key3: 'value3'
+};
+
+// arr в JSON
+const str = JSON.stringify(arr);
+// str в объект (ассоциативный массив)
+const newArr = JSON.parse(str);
+*/
+let _chkAll = true;
+let _chkSpade = true;
+let _chkHeart = true;
+let _chkClub = true;
+let _chkDiamond = true;
+
+let _chk1 = true;
+let _chk2 = true;
+let _chk3 = true;
+let _chk4 = true;
+let _chk5 = true;
+let _chk6 = true;
+let _chk7 = true;
+let _chk8 = true;
+let _chk9 = true;
+let _chk10 = true;
+let _chk11 = true;
+let _chk12 = true;
+let _chk13 = true;
+
+$d.find('#checkAll').checked = _chk.get('checkAll');
+$d.find('#checkSpade').checked = _chk.get('checkSpade');
+$d.find('#checkHeart').checked = _chk.get('checkHeart');
+$d.find('#checkClub').checked = _chk.get('checkClub');
+$d.find('#checkDiamond').checked = _chk.get('checkDiamond');
+$d.find('#check1').checked = _chk.get('check1');
+$d.find('#check2').checked = _chk.get('check2');
+$d.find('#check3').checked = _chk.get('check3');
+$d.find('#check4').checked = _chk.get('check4');
+$d.find('#check5').checked = _chk.get('check5');
+$d.find('#check6').checked = _chk.get('check6');
+$d.find('#check7').checked = _chk.get('check7');
+$d.find('#check8').checked = _chk.get('check9');
+$d.find('#check9').checked = _chk.get('check9');
+$d.find('#check10').checked = _chk.get('check10');
+$d.find('#check11').checked = _chk.get('check11');
+$d.find('#check12').checked = _chk.get('check12');
+$d.find('#check13').checked = _chk.get('check13');
 // https://getbootstrap.com/docs/5.0/components/buttons/
 
-let $checkAll = $('#checkAll');
+let $checkAll = $d.find('#checkAll');
 $checkAll.on('click',function(){
-	_checkAll=!_checkAll;
-	_checkSpade = _checkAll;
-	_checkHeart = _checkAll;
-	_checkClub = _checkAll;
-	_checkDiamond = _checkAll;
+	_chk.set('checkAll',!_chk.get('checkAll'));
+	_chk.set('checkSpade',_chk.get('checkAll'));
+	_chk.set('checkHeart',_chk.get('checkAll'));
+	_chk.set('checkClub',_chk.get('checkAll'));
+	_chk.set('checkDiamond',_chk.get('checkAll'));
+	_chk.set('check1',_chk.get('checkAll'));
+	_chk.set('check2',_chk.get('checkAll'));
+	_chk.set('check3',_chk.get('checkAll'));
+	_chk.set('check4',_chk.get('checkAll'));
+	_chk.set('check5',_chk.get('checkAll'));
+	_chk.set('check6',_chk.get('checkAll'));
+	_chk.set('check7',_chk.get('checkAll'));
+	_chk.set('check8',_chk.get('checkAll'));
+	_chk.set('check9',_chk.get('checkAll'));
+	_chk.set('check10',_chk.get('checkAll'));
+	_chk.set('check11',_chk.get('checkAll'));
+	_chk.set('check12',_chk.get('checkAll'));
+	_chk.set('check13',_chk.get('checkAll'));
 
-	$('#checkSpade').checked = _checkSpade;
-	$('#checkHeart').checked = _checkHeart;
-	$('#checkClub').checked = _checkClub;
-	$('#checkDiamond').checked = _checkDiamond;
+
+	$d.find('#checkSpade').checked = _chk.get('checkSpade');
+	$d.find('#checkHeart').checked = _chk.get('checkHeart');
+	$d.find('#checkClub').checked = _chk.get('checkClub');
+	$d.find('#checkDiamond').checked = _chk.get('checkDiamond');
 	
-	console.log('checkAll: ' + _checkAll);
+	$d.find('#check1').checked = _chk.get('check1');
+	$d.find('#check2').checked = _chk.get('check2');
+	$d.find('#check3').checked = _chk.get('check3');
+	$d.find('#check4').checked = _chk.get('check4');
+	$d.find('#check5').checked = _chk.get('check5');
+	$d.find('#check6').checked = _chk.get('check6');
+	$d.find('#check7').checked = _chk.get('check7');
+	$d.find('#check8').checked = _chk.get('check9');
+	$d.find('#check9').checked = _chk.get('check9');
+	$d.find('#check10').checked = _chk.get('check10');
+	$d.find('#check11').checked = _chk.get('check11');
+	$d.find('#check12').checked = _chk.get('check12');
+	$d.find('#check13').checked = _chk.get('check13');
+
+	console.log('checkAll: ' + _chk.get('checkAll'));
+});
+
+// getStart
+$d.find('#getStart').on('click', function () {
+	$d.find('#greetings').style['display'] = "none"; // "block"
+	$d.find('#card').style['display'] = "block";
 });
 
 // original deck
