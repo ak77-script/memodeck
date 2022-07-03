@@ -457,6 +457,18 @@ for (let _b = 1; _b < 14; _b++) {
 	
 }
 
+// сюда вставить обход карт
+for (let i = 1; i < 53 ; i++ ) {
+
+	let $card = $d.find('#check_card_'+ i);
+
+	$card.on('click',function(){
+		let _bool = !_chk.get('check_card_'+ i);
+		_chk.set('check_card_'+ i,_bool);
+		console.log(i + ': suit - ' + getSuit(i) + ' rank - ' + getRank(i));
+	});
+}
+
 function setRanksRow() {
 	for (let i = 1; i < 14; i = i + 1) {
 		if (sumChecks(0,i) < 4) {
@@ -531,6 +543,16 @@ function sumChecks(suit = 0, rank = 0, value = 0) {
 	}
 
 	return sum;
+}
+
+function getRank(value) {
+	let rank = (value-1) % 13 + 1;
+	return rank;
+}
+
+function getSuit(value) {
+	let suit = (value-1) / 13 | 0;
+	return suit + 1;
 }
 
 /*
