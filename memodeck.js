@@ -381,12 +381,6 @@ _chk.forEach(function(value, key, map) {
 // https://getbootstrap.com/docs/5.0/components/buttons/
 */
 
-let a = true;
-let b = true;
-let c = false;
-let d = false;
-console.log(a+b+c+d);
-
 $d.find('#checkAll').on('click',function(){
 	let _bool = !_chk.get('checkAll');
 	
@@ -395,64 +389,69 @@ $d.find('#checkAll').on('click',function(){
 		_chk.set(key,_bool);
 		$d.find('#'+key).checked = _bool;
 	});
-	console.log('checkAll: ' + _chk.get('checkAll') + ' ' + sumChecks());
+	//console.log('checkAll: ' + _chk.get('checkAll') + ' ' + sumChecks());
 
 });
 
 $d.find('#checkSpade').on('click',function(){
-	console.log('click checkSpade')
+	//console.log('click checkSpade')
 	let _bool = !_chk.get('checkSpade');
 	_chk.set('checkSpade',_bool);
 	for (let i = 1; i < 14; i++) {
 		setCheck('check_card_'+i,_bool);
 	}
 	setRanksRow();
-	console.log('checkSpade: ' + _chk.get('checkSpade') + ' ' + sumChecks(1));
+	setCheckAll();
+	//console.log('checkSpade: ' + _chk.get('checkSpade') + ' ' + sumChecks(1));
 });
 
 $d.find('#checkHeart').on('click',function(){
-	console.log('click checkHeart')
+	//console.log('click checkHeart')
 	let _bool = !_chk.get('checkHeart');
 	_chk.set('checkHeart',_bool);
 	for (let i = 14; i < 27; i++) {
 		setCheck('check_card_'+i,_bool);
 	}
 	setRanksRow();
-	console.log('checkHeart: ' + _chk.get('checkHeart') + ' ' + sumChecks(2));
+	setCheckAll();
+	//console.log('checkHeart: ' + _chk.get('checkHeart') + ' ' + sumChecks(2));
 });
 
 $d.find('#checkClub').on('click',function(){
-	console.log('click checkClub')
+	//console.log('click checkClub')
 	let _bool = !_chk.get('checkClub');
 	_chk.set('checkClub',_bool);
 	for (let i = 27; i < 40; i++) {
 		setCheck('check_card_'+i,_bool);
 	}
 	setRanksRow();
-	console.log('checkClub: ' + _chk.get('checkClub') + ' ' + sumChecks(3));
+	setCheckAll();
+	//console.log('checkClub: ' + _chk.get('checkClub') + ' ' + sumChecks(3));
 });
 
 $d.find('#checkDiamond').on('click',function(){
-	console.log('click checkDiamond')
+	//console.log('click checkDiamond')
 	let _bool = !_chk.get('checkDiamond');
 	_chk.set('checkDiamond',_bool);
 	for (let i = 40; i < 53; i++) {
 		setCheck('check_card_'+i,_bool);
 	}
-	
-	console.log('checkDiamond: ' + _chk.get('checkDiamond') + ' ' + sumChecks(4));
+	setRanksRow();
+	setCheckAll();
+	//console.log('checkDiamond: ' + _chk.get('checkDiamond') + ' ' + sumChecks(4));
 });
 
 for (let _b = 1; _b < 14; _b++) {
 	$d.find('#check'+_b).on('click',function(){
-		console.log('click check'+_b)
+		//console.log('click check'+_b)
 		let _bool = !_chk.get('check'+_b);
 		_chk.set('check'+_b,_bool);
 		for (let i = _b; i < 53; i=i+13) {
 			setCheck('check_card_'+i,_bool);
 		}
 		setSuitsRow();
-		console.log('check'+_b+': ' + _chk.get('check'+_b) + ' ' + sumChecks(0,_b));
+		setCheckAll();
+		//console.log('check'+_b+': ' + _chk.get('check'+_b) + ' ' + sumChecks(0,_b));
 	});
 	
 }
@@ -465,8 +464,47 @@ for (let i = 1; i < 53 ; i++ ) {
 	$card.on('click',function(){
 		let _bool = !_chk.get('check_card_'+ i);
 		_chk.set('check_card_'+ i,_bool);
-		console.log(i + ': suit - ' + getSuit(i) + ' rank - ' + getRank(i));
+		setSuitsNRanksRows(i);
+		setCheckAll();
 	});
+}
+
+function setSuitsNRanksRows(value){
+	
+	let suit = getSuit(value);
+	let rank = getRank(value);
+
+	console.log(value + ': suit - ' + suit + ' rank - ' + rank);
+
+	let checkSuit = suit == 1 ? 'checkSpade' : suit == 2 ? 'checkHeart' : suit == 3 ? 'checkClub' : 'checkDiamond';
+	let sumSuits = true ; //sumChecks(suit) == 13 ? true : false;
+
+	if (sumChecks(suit,0) == 13 ) {
+		sumSuits = true;
+	} else {
+		sumSuits = false;
+	}
+
+	let sumRanks = true;
+	if (sumChecks(0,rank) == 4 ) {
+		sumRanks = true;
+	} else {
+		sumRanks = false;
+	}
+	sumChecks(suit) == 4 ? true : false;
+
+	console.log('sumsuits - ' + sumChecks(suit) + ':' + sumSuits + ' sumranks - ' + sumChecks(0,rank) + ':' + sumRanks);
+
+	_chk.set(checkSuit,sumSuits);
+	$d.find('#'+checkSuit).checked = sumSuits;
+	_chk.set('check'+rank,sumRanks);
+	$d.find('#check'+rank).checked = sumRanks;
+}
+
+function setCheckAll() {
+	let sum = sumChecks() == 52 ? true : false;
+	_chk.set('checkAll',sum);
+	$d.find('#checkAll').checked = sum;
 }
 
 function setRanksRow() {
