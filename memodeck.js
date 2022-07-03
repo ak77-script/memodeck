@@ -371,89 +371,90 @@ const str = JSON.stringify(arr);
 // str в объект (ассоциативный массив)
 const newArr = JSON.parse(str);
 */
-let _chkAll = true;
-let _chkSpade = true;
-let _chkHeart = true;
-let _chkClub = true;
-let _chkDiamond = true;
 
-let _chk1 = true;
-let _chk2 = true;
-let _chk3 = true;
-let _chk4 = true;
-let _chk5 = true;
-let _chk6 = true;
-let _chk7 = true;
-let _chk8 = true;
-let _chk9 = true;
-let _chk10 = true;
-let _chk11 = true;
-let _chk12 = true;
-let _chk13 = true;
+_chk.forEach(function(value, key, map) {
+	//console.log(`_chk[${key}] = ${value}`);
+	$d.find('#' + key).checked = value;	
+  });
 
-$d.find('#checkAll').checked = _chk.get('checkAll');
-$d.find('#checkSpade').checked = _chk.get('checkSpade');
-$d.find('#checkHeart').checked = _chk.get('checkHeart');
-$d.find('#checkClub').checked = _chk.get('checkClub');
-$d.find('#checkDiamond').checked = _chk.get('checkDiamond');
-$d.find('#check1').checked = _chk.get('check1');
-$d.find('#check2').checked = _chk.get('check2');
-$d.find('#check3').checked = _chk.get('check3');
-$d.find('#check4').checked = _chk.get('check4');
-$d.find('#check5').checked = _chk.get('check5');
-$d.find('#check6').checked = _chk.get('check6');
-$d.find('#check7').checked = _chk.get('check7');
-$d.find('#check8').checked = _chk.get('check9');
-$d.find('#check9').checked = _chk.get('check9');
-$d.find('#check10').checked = _chk.get('check10');
-$d.find('#check11').checked = _chk.get('check11');
-$d.find('#check12').checked = _chk.get('check12');
-$d.find('#check13').checked = _chk.get('check13');
+/*
 // https://getbootstrap.com/docs/5.0/components/buttons/
+*/
 
-let $checkAll = $d.find('#checkAll');
-$checkAll.on('click',function(){
-	_chk.set('checkAll',!_chk.get('checkAll'));
-	_chk.set('checkSpade',_chk.get('checkAll'));
-	_chk.set('checkHeart',_chk.get('checkAll'));
-	_chk.set('checkClub',_chk.get('checkAll'));
-	_chk.set('checkDiamond',_chk.get('checkAll'));
-	_chk.set('check1',_chk.get('checkAll'));
-	_chk.set('check2',_chk.get('checkAll'));
-	_chk.set('check3',_chk.get('checkAll'));
-	_chk.set('check4',_chk.get('checkAll'));
-	_chk.set('check5',_chk.get('checkAll'));
-	_chk.set('check6',_chk.get('checkAll'));
-	_chk.set('check7',_chk.get('checkAll'));
-	_chk.set('check8',_chk.get('checkAll'));
-	_chk.set('check9',_chk.get('checkAll'));
-	_chk.set('check10',_chk.get('checkAll'));
-	_chk.set('check11',_chk.get('checkAll'));
-	_chk.set('check12',_chk.get('checkAll'));
-	_chk.set('check13',_chk.get('checkAll'));
+$d.find('#checkAll').on('click',function(){
+	let _bool = !_chk.get('checkAll');
+	
+	_chk.forEach(function(value, key, map) {
+		//console.log(`_chk[${key}] = ${value}`);
+		_chk.set(key,_bool);
+		$d.find('#'+key).checked = _bool;
+	});
+	console.log('checkAll: ' + _chk.get('checkAll'));
+
+});
+
+$d.find('#checkSpade').on('click',function(){
+	console.log('click checkSpade')
+	let _bool = !_chk.get('checkSpade');
+	_chk.set('checkSpade',_bool);
+	for (let i = 1; i < 14; i++) {
+		setCheck('check_card_'+i,_bool);
+	}
+	
+});
+
+$d.find('#checkHeart').on('click',function(){
+	console.log('click checkHeart')
+	let _bool = !_chk.get('checkHeart');
+	_chk.set('checkHeart',_bool);
+	for (let i = 14; i < 27; i++) {
+		setCheck('check_card_'+i,_bool);
+	}
+	
+});
+
+$d.find('#checkClub').on('click',function(){
+	console.log('click checkClub')
+	let _bool = !_chk.get('checkClub');
+	_chk.set('checkClub',_bool);
+	for (let i = 27; i < 40; i++) {
+		setCheck('check_card_'+i,_bool);
+	}
+	
+});
+
+$d.find('#checkDiamond').on('click',function(){
+	console.log('click checkDiamond')
+	let _bool = !_chk.get('checkDiamond');
+	_chk.set('checkDiamond',_bool);
+	for (let i = 40; i < 53; i++) {
+		setCheck('check_card_'+i,_bool);
+	}
+});
+
+for (let _b = 1; _b < 14; _b++) {
+	$d.find('#check'+_b).on('click',function(){
+		console.log('click check'+_b)
+		let _bool = !_chk.get('check'+_b);
+		_chk.set('check'+_b,_bool);
+		for (let i = _b; i < 53; i=i+13) {
+			setCheck('check_card_'+i,_bool);
+		}
+	});
+}
 
 
+function setCheck(key, value) {
+	_chk.set(key,value); $d.find('#'+key).checked = value;
+}
+	
+/*
 	$d.find('#checkSpade').checked = _chk.get('checkSpade');
 	$d.find('#checkHeart').checked = _chk.get('checkHeart');
 	$d.find('#checkClub').checked = _chk.get('checkClub');
 	$d.find('#checkDiamond').checked = _chk.get('checkDiamond');
-	
-	$d.find('#check1').checked = _chk.get('check1');
-	$d.find('#check2').checked = _chk.get('check2');
-	$d.find('#check3').checked = _chk.get('check3');
-	$d.find('#check4').checked = _chk.get('check4');
-	$d.find('#check5').checked = _chk.get('check5');
-	$d.find('#check6').checked = _chk.get('check6');
-	$d.find('#check7').checked = _chk.get('check7');
-	$d.find('#check8').checked = _chk.get('check9');
-	$d.find('#check9').checked = _chk.get('check9');
-	$d.find('#check10').checked = _chk.get('check10');
-	$d.find('#check11').checked = _chk.get('check11');
-	$d.find('#check12').checked = _chk.get('check12');
-	$d.find('#check13').checked = _chk.get('check13');
+*/
 
-	console.log('checkAll: ' + _chk.get('checkAll'));
-});
 
 // getStart
 $d.find('#getStart').on('click', function () {
