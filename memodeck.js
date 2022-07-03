@@ -470,30 +470,26 @@ for (let i = 1; i < 53 ; i++ ) {
 }
 
 function setSuitsNRanksRows(value){
-	
 	let suit = getSuit(value);
 	let rank = getRank(value);
 
-	console.log(value + ': suit - ' + suit + ' rank - ' + rank);
-
 	let checkSuit = suit == 1 ? 'checkSpade' : suit == 2 ? 'checkHeart' : suit == 3 ? 'checkClub' : 'checkDiamond';
-	let sumSuits = true ; //sumChecks(suit) == 13 ? true : false;
-
+	let sumSuits = sumChecks(suit,0) == 13 ? true : false;
+/*
 	if (sumChecks(suit,0) == 13 ) {
 		sumSuits = true;
 	} else {
 		sumSuits = false;
 	}
-
-	let sumRanks = true;
+*/
+	let sumRanks = sumChecks(0,rank) == 4 ? true : false;
+/*
 	if (sumChecks(0,rank) == 4 ) {
 		sumRanks = true;
 	} else {
 		sumRanks = false;
 	}
-	sumChecks(suit) == 4 ? true : false;
-
-	console.log('sumsuits - ' + sumChecks(suit) + ':' + sumSuits + ' sumranks - ' + sumChecks(0,rank) + ':' + sumRanks);
+*/
 
 	_chk.set(checkSuit,sumSuits);
 	$d.find('#'+checkSuit).checked = sumSuits;
