@@ -381,6 +381,12 @@ _chk.forEach(function(value, key, map) {
 // https://getbootstrap.com/docs/5.0/components/buttons/
 */
 
+let a = true;
+let b = true;
+let c = false;
+let d = false;
+console.log(a+b+c+d);
+
 $d.find('#checkAll').on('click',function(){
 	let _bool = !_chk.get('checkAll');
 	
@@ -389,7 +395,7 @@ $d.find('#checkAll').on('click',function(){
 		_chk.set(key,_bool);
 		$d.find('#'+key).checked = _bool;
 	});
-	console.log('checkAll: ' + _chk.get('checkAll'));
+	console.log('checkAll: ' + _chk.get('checkAll') + ' ' + sumChecks());
 
 });
 
@@ -400,7 +406,8 @@ $d.find('#checkSpade').on('click',function(){
 	for (let i = 1; i < 14; i++) {
 		setCheck('check_card_'+i,_bool);
 	}
-	
+	setRanksRow();
+	console.log('checkSpade: ' + _chk.get('checkSpade') + ' ' + sumChecks(1));
 });
 
 $d.find('#checkHeart').on('click',function(){
@@ -410,7 +417,8 @@ $d.find('#checkHeart').on('click',function(){
 	for (let i = 14; i < 27; i++) {
 		setCheck('check_card_'+i,_bool);
 	}
-	
+	setRanksRow();
+	console.log('checkHeart: ' + _chk.get('checkHeart') + ' ' + sumChecks(2));
 });
 
 $d.find('#checkClub').on('click',function(){
@@ -420,7 +428,8 @@ $d.find('#checkClub').on('click',function(){
 	for (let i = 27; i < 40; i++) {
 		setCheck('check_card_'+i,_bool);
 	}
-	
+	setRanksRow();
+	console.log('checkClub: ' + _chk.get('checkClub') + ' ' + sumChecks(3));
 });
 
 $d.find('#checkDiamond').on('click',function(){
@@ -430,6 +439,8 @@ $d.find('#checkDiamond').on('click',function(){
 	for (let i = 40; i < 53; i++) {
 		setCheck('check_card_'+i,_bool);
 	}
+	
+	console.log('checkDiamond: ' + _chk.get('checkDiamond') + ' ' + sumChecks(4));
 });
 
 for (let _b = 1; _b < 14; _b++) {
@@ -440,9 +451,96 @@ for (let _b = 1; _b < 14; _b++) {
 		for (let i = _b; i < 53; i=i+13) {
 			setCheck('check_card_'+i,_bool);
 		}
+		setSuitsRow();
+		console.log('check'+_b+': ' + _chk.get('check'+_b) + ' ' + sumChecks(0,_b));
 	});
+	
 }
 
+function setRanksRow() {
+	for (let i = 1; i < 14; i = i + 1) {
+		if (sumChecks(0,i) < 4) {
+			_chk.set('check'+i,false);
+			$d.find('#check'+i).checked = false;
+		} else {
+			_chk.set('check'+i,true);
+			$d.find('#check'+i).checked = true;
+		}
+	}
+}
+
+function setSuitsRow() {
+	let _spade = sumChecks(1);
+	let _heart = sumChecks(2);
+	let _club = sumChecks(3);
+	let _diamond = sumChecks(4);
+	
+	if (_spade < 13) {
+		_chk.set('checkSpade',false);
+		$d.find('#checkSpade').checked = false;
+	} else {
+		_chk.set('checkSpade',true);
+		$d.find('#checkSpade').checked = true;
+	}
+
+	if (_heart < 13) {
+		_chk.set('checkHeart',false);
+		$d.find('#checkHeart').checked = false;
+	} else {
+		_chk.set('checkHeart',true);
+		$d.find('#checkHeart').checked = true;
+	}
+	
+	if (_club < 13) {
+		_chk.set('checkClub',false);
+		$d.find('#checkClub').checked = false;
+	} else {
+		_chk.set('checkClub',true);
+		$d.find('#checkClub').checked = true;
+	}
+	
+	if (_diamond < 13) {
+		_chk.set('checkDiamond',false);
+		$d.find('#checkDiamond').checked = false;
+	} else {
+		_chk.set('checkDiamond',true);
+		$d.find('#checkDiamond').checked = true;
+	}
+}
+
+function sumChecks(suit = 0, rank = 0, value = 0) {
+	let sum = 0;
+
+	if (suit==0 && rank==0 && value == 0)  {
+		for (let i = 1; i < 53; i = i + 1) {
+			sum = sum + _chk.get('check_card_' + i);
+		}
+	} else if (suit > 0 && rank == 0 && value == 0) {
+		for (let i = (suit - 1) * 13 + 1; i < suit * 13 + 1; i = i + 1) {
+			sum = sum + _chk.get('check_card_' + i);
+		}
+	} else if (suit == 0 && rank > 0 && value == 0) {
+		for (let i = rank; i < 53; i = i + 13) {
+			sum = sum + _chk.get('check_card_' + i);
+		}
+	} else if (suit == 0 && rank == 0 && value > 0) {
+		// дублирует первый вариант, думаю можно удалить
+		for (let i = 1; i < 53; i = i + 1) {
+			sum = sum + _chk.get('check_card_' + i);
+		}
+	}
+
+	return sum;
+}
+
+/*
+
+	для каждой карты
+
+    var rank = i % 13 + 1;
+    var suit = i / 13 | 0;
+
+*/
 
 function setCheck(key, value) {
 	_chk.set(key,value); $d.find('#'+key).checked = value;
