@@ -26,11 +26,6 @@ const ByTagName = $d.getElementsByTagName;
 // aliases for querySelector
 $d.find = $d.querySelector;
 $d.findAll = $d.querySelectorAll;
-//const $ = document.querySelector.bind(document)
-//const $$ = document.querySelectorAll.bind(document)
-
-//$('div').style.color = 'blue'
-//$$('div').forEach(div => div.style.background = 'orange')
 
 const _chk = new Map([
 	['checkAll', true],
@@ -376,10 +371,6 @@ _chk.forEach(function(value, key, map) {
 	//console.log(`_chk[${key}] = ${value}`);
 	$d.find('#' + key).checked = value;	
   });
-
-/*
-// https://getbootstrap.com/docs/5.0/components/buttons/
-*/
 
 $d.find('#checkAll').on('click',function(){
 	let _bool = !_chk.get('checkAll');
