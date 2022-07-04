@@ -27,6 +27,8 @@ const ByTagName = $d.getElementsByTagName;
 $d.find = $d.querySelector;
 $d.findAll = $d.querySelectorAll;
 
+let $cards = [];
+
 const _chk = new Map([
 	['checkAll', true],
 	['checkSpade', true],
@@ -273,36 +275,24 @@ let arr = new Map([
 jsonStr = JSON.stringify([...arr]);
 // из JSON в Map
 mapArr = new Map(JSON.parse(jsonStr));
-
 */
 
 _chk.forEach(function(value, key, map) {
-	//console.log(`_chk[${key}] = ${value}`);
 	$d.find('#' + key).checked = value;	
-  });
+});
 
 $d.find('#checkAll').on('click',function(){
 	let _bool = !_chk.get('checkAll');
-	
-	_chk.forEach(function(value, key, map) {
-		//console.log(`_chk[${key}] = ${value}`);
-		_chk.set(key,_bool);
-		$d.find('#'+key).checked = _bool;
-	});
-	
-	/*
 	for (let pair of _chk) {
-	    _chk.set(pair[0], _bool
-	    );
-	    $d.find('#'+pair[0].checked = _bool;
+	    _chk.set(pair[0], _bool);
+	    $d.find('#'+pair[0]).checked = _bool;
 	}
-	*/
-	//console.log('checkAll: ' + _chk.get('checkAll') + ' ' + sumChecks());
 
+	$cards = getCards(_chk);
+	
 });
 
 $d.find('#checkSpade').on('click',function(){
-	//console.log('click checkSpade')
 	let _bool = !_chk.get('checkSpade');
 	_chk.set('checkSpade',_bool);
 	for (let i = 1; i < 14; i++) {
@@ -310,11 +300,12 @@ $d.find('#checkSpade').on('click',function(){
 	}
 	setRanksRow();
 	setCheckAll();
-	//console.log('checkSpade: ' + _chk.get('checkSpade') + ' ' + sumChecks(1));
+
+	$cards = getCards(_chk);
+	
 });
 
 $d.find('#checkHeart').on('click',function(){
-	//console.log('click checkHeart')
 	let _bool = !_chk.get('checkHeart');
 	_chk.set('checkHeart',_bool);
 	for (let i = 14; i < 27; i++) {
@@ -322,11 +313,12 @@ $d.find('#checkHeart').on('click',function(){
 	}
 	setRanksRow();
 	setCheckAll();
-	//console.log('checkHeart: ' + _chk.get('checkHeart') + ' ' + sumChecks(2));
+
+	$cards = getCards(_chk);
+	
 });
 
 $d.find('#checkClub').on('click',function(){
-	//console.log('click checkClub')
 	let _bool = !_chk.get('checkClub');
 	_chk.set('checkClub',_bool);
 	for (let i = 27; i < 40; i++) {
@@ -334,11 +326,12 @@ $d.find('#checkClub').on('click',function(){
 	}
 	setRanksRow();
 	setCheckAll();
-	//console.log('checkClub: ' + _chk.get('checkClub') + ' ' + sumChecks(3));
+
+	$cards = getCards(_chk);
+	
 });
 
 $d.find('#checkDiamond').on('click',function(){
-	//console.log('click checkDiamond')
 	let _bool = !_chk.get('checkDiamond');
 	_chk.set('checkDiamond',_bool);
 	for (let i = 40; i < 53; i++) {
@@ -346,12 +339,13 @@ $d.find('#checkDiamond').on('click',function(){
 	}
 	setRanksRow();
 	setCheckAll();
-	//console.log('checkDiamond: ' + _chk.get('checkDiamond') + ' ' + sumChecks(4));
+
+	$cards = getCards(_chk);
+	
 });
 
 for (let _b = 1; _b < 14; _b++) {
 	$d.find('#check'+_b).on('click',function(){
-		//console.log('click check'+_b)
 		let _bool = !_chk.get('check'+_b);
 		_chk.set('check'+_b,_bool);
 		for (let i = _b; i < 53; i=i+13) {
@@ -359,9 +353,10 @@ for (let _b = 1; _b < 14; _b++) {
 		}
 		setSuitsRow();
 		setCheckAll();
-		//console.log('check'+_b+': ' + _chk.get('check'+_b) + ' ' + sumChecks(0,_b));
+
+		$cards = getCards(_chk);
+		
 	});
-	
 }
 
 // checks cards
@@ -374,7 +369,11 @@ for (let i = 1; i < 53 ; i++ ) {
 		_chk.set('check_card_'+ i,_bool);
 		setSuitsNRanksRows(i);
 		setCheckAll();
+
+		$cards = getCards(_chk);
+		
 	});
+
 }
 
 function setSuitsNRanksRows(value){
@@ -484,32 +483,27 @@ function getSuit(value) {
 	return suit + 1;
 }
 
-/*
-
-	для каждой карты
-
-    var rank = i % 13 + 1;
-    var suit = i / 13 | 0;
-
-*/
-
 function setCheck(key, value) {
 	_chk.set(key,value); $d.find('#'+key).checked = value;
 }
-	
-/*
-	$d.find('#checkSpade').checked = _chk.get('checkSpade');
-	$d.find('#checkHeart').checked = _chk.get('checkHeart');
-	$d.find('#checkClub').checked = _chk.get('checkClub');
-	$d.find('#checkDiamond').checked = _chk.get('checkDiamond');
-*/
-
 
 // getStart
 $d.find('#getStart').on('click', function () {
 	$d.find('#greetings').style['display'] = "none"; // "block"
 	$d.find('#card').style['display'] = "block";
 });
+
+function getCards(_chk) {
+	let _arr = [];
+
+	for (let i = 1 ; i < 53; i++) {
+		let _key = 'check_card_' + i;
+		let _val = _chk.get(_key);
+		if (_val) _arr.push(i);
+	}
+	console.log(_arr); // для отладки
+	return _arr;
+}
 
 // original deck
 let origdeck = (function (onoff) {
@@ -678,29 +672,10 @@ let origdeck = (function (onoff) {
 // https://developer.mozilla.org/ru/docs/Web/JavaScript/Guide/Functions
  
 let memodeck = (function (onoff) {
-	// ссылка на d3.js
-	// вся работа с DOM осуществляется через библиотеку Data Driven Documents 
-	const _dom = d3;
-
-	let containerId = 'main';
-	let getstartbtnId = 'getStart';
 	
 	function memodeck() {
 		// инициализация
 		let self = this;
-		self.d = _dom;
-
-		const _body = self.d.select('body');
-		const _header = _body.select('header');
-		const _nav = _body.select('nav');
-		const _main = _body.select('main');
-		const _footer = _body.select('footer');
-		
-		self.body = _body;
-		self.header = _header;
-		self.nav = _nav;
-		self.main = _main;
-		self.footer = _footer;
 
 		let _cards = {elts:[
 			{id:1,rank:'Т',suit:0,code:'ПаТефон',image:''},
@@ -757,18 +732,11 @@ let memodeck = (function (onoff) {
 			{id:52,rank:'К',suit:3,code:'БуК',image:''}
 		]};
 		
-		// getStart
-		_main.select('#getStart').on('click', function () {
-			//_main.select('#greetings').style("visibility", "hidden"); //visible
-			_main.select('#greetings').style("display", "none");
-		});
-
 		return self;
 	}
 
 	if (onoff) {
 		let md = memodeck();
-		//md.main.hide();
 	}
 	
 	return memodeck;
