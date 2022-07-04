@@ -356,7 +356,7 @@ for (let _b = 1; _b < 14; _b++) {
 	
 }
 
-// сюда вставить обход карт
+// checks cards
 for (let i = 1; i < 53 ; i++ ) {
 
 	let $card = $d.find('#check_card_'+ i);
@@ -375,21 +375,8 @@ function setSuitsNRanksRows(value){
 
 	let checkSuit = suit == 1 ? 'checkSpade' : suit == 2 ? 'checkHeart' : suit == 3 ? 'checkClub' : 'checkDiamond';
 	let sumSuits = sumChecks(suit,0) == 13 ? true : false;
-/*
-	if (sumChecks(suit,0) == 13 ) {
-		sumSuits = true;
-	} else {
-		sumSuits = false;
-	}
-*/
+
 	let sumRanks = sumChecks(0,rank) == 4 ? true : false;
-/*
-	if (sumChecks(0,rank) == 4 ) {
-		sumRanks = true;
-	} else {
-		sumRanks = false;
-	}
-*/
 
 	_chk.set(checkSuit,sumSuits);
 	$d.find('#'+checkSuit).checked = sumSuits;
