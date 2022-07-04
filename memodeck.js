@@ -290,7 +290,8 @@ $d.find('#checkAll').on('click',function(){
 		$d.find('#'+key).checked = _bool;
 	});
 	for (let pair of _chk) {
-	    
+	    _chk.set(pair[0, _bool
+	    );
 	}
 	//console.log('checkAll: ' + _chk.get('checkAll') + ' ' + sumChecks());
 
