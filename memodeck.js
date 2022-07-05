@@ -340,7 +340,7 @@ function clickSpade($d, _chk, $cards) {
 	$cards = getCards(_chk);
 } 
 
-$d.find('#checkHeart').on('click',function(){
+$d.find('#checkHeart').on('click', clickHeart($d, _chk, $cards) /*function(){
 	let _bool = !_chk.get('checkHeart');
 	_chk.set('checkHeart',_bool);
 	for (let i = 14; i < 27; i++) {
@@ -351,7 +351,7 @@ $d.find('#checkHeart').on('click',function(){
 
 	$cards = getCards(_chk);
 	
-});
+}*/);
 
 // callback for click checkHeart
 function clickHeart($d, _chk, $cards) {
