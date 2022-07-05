@@ -34,7 +34,7 @@ const _chk = new Map([
 	['checkSpade', true],
 	['checkHeart', true],
 	['checkClub', true],
-	['checkDiamond', true],
+	['checkDiamond', true]//,
 /*	['check1', true],
 	['check2', true],
 	['check3', true],
@@ -47,7 +47,7 @@ const _chk = new Map([
 	['check10', true],
 	['check11', true],
 	['check12', true],
-	['check13', true],*/
+	['check13', true],
 	['check_card_1', true],
 	['check_card_2', true],
 	['check_card_3', true],
@@ -99,12 +99,17 @@ const _chk = new Map([
 	['check_card_49', true],
 	['check_card_50', true],
 	['check_card_51', true],
-	['check_card_52', true]
+	['check_card_52', true]*/
   ]);
   
   for(let i = 1; i < 14; i++)
   {
       _chk.set('check' + i, true);
+  }
+  
+for(let i = 1; i < 53; i++)
+  {
+      _chk.set('check_card_' + i, true);
   }
 
 /*
