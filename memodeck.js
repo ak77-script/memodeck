@@ -329,7 +329,15 @@ $d.find('#checkSpade').on('click',function(){
 
 // callback for click checkSpade
 function clickSpade() {
-    
+	let _bool = !_chk.get('checkSpade');
+	_chk.set('checkSpade',_bool);
+	for (let i = 1; i < 14; i++) {
+		setCheck('check_card_'+i,_bool);
+	}
+	setRanksRow();
+	setCheckAll();
+
+	$cards = getCards(_chk);
 } 
 
 $d.find('#checkHeart').on('click',function(){
