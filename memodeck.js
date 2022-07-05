@@ -396,7 +396,7 @@ function clickClub($d, _chk, $cards) {
 	
 }
 
-$d.find('#checkDiamond').on('click',function(){
+$d.find('#checkDiamond').on('click', clickDiamond($d, _chk, $cards) /*function(){
 	let _bool = !_chk.get('checkDiamond');
 	_chk.set('checkDiamond',_bool);
 	for (let i = 40; i < 53; i++) {
@@ -407,7 +407,21 @@ $d.find('#checkDiamond').on('click',function(){
 
 	$cards = getCards(_chk);
 	
-});
+}*/);
+
+//callback for click checkDiamond 
+function clickDiamond($d, _chk, $cards) {
+	let _bool = !_chk.get('checkDiamond');
+	_chk.set('checkDiamond',_bool);
+	for (let i = 40; i < 53; i++) {
+		setCheck('check_card_'+i,_bool);
+	}
+	setRanksRow();
+	setCheckAll();
+
+	$cards = getCards(_chk);
+	
+}
 
 for (let _b = 1; _b < 14; _b++) {
 	$d.find('#check'+_b).on('click',function(){
