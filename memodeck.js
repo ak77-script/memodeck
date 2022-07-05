@@ -355,7 +355,18 @@ $d.find('#checkHeart').on('click',function(){
 
 // callback for click checkHeart
 function clickHeart($d, _chk, $cards) {
-    
+    let _bool = !_chk.get('checkHeart');
+
+	_chk.set('checkHeart',_bool);
+
+	for (let i = 14; i < 27; i++) {
+		setCheck('check_card_'+i,_bool);
+	}
+	setRanksRow();
+	setCheckAll();
+
+	$cards = getCards(_chk);
+	
 } 
 
 $d.find('#checkClub').on('click',function(){
