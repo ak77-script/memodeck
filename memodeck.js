@@ -382,6 +382,8 @@ $d.find('#checkClub').on('click',function(){
 	
 });
 
+//callback for click checkClub
+
 $d.find('#checkDiamond').on('click',function(){
 	let _bool = !_chk.get('checkDiamond');
 	_chk.set('checkDiamond',_bool);
