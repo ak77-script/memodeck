@@ -35,7 +35,7 @@ const _chk = new Map([
 	['checkHeart', true],
 	['checkClub', true],
 	['checkDiamond', true],
-	['check1', true],
+/*	['check1', true],
 	['check2', true],
 	['check3', true],
 	['check4', true],
@@ -47,7 +47,7 @@ const _chk = new Map([
 	['check10', true],
 	['check11', true],
 	['check12', true],
-	['check13', true],
+	['check13', true],*/
 	['check_card_1', true],
 	['check_card_2', true],
 	['check_card_3', true],
@@ -101,6 +101,11 @@ const _chk = new Map([
 	['check_card_51', true],
 	['check_card_52', true]
   ]);
+  
+  for(let i = 1; i < 14; i++)
+  {
+      _chk.set('check' + i, true);
+  }
 
 /*
 Статья, в которой рассмотрим какие в JavaScript имеются способы создания ассоциативных массивов, а также основные приёмы работы с ними.
