@@ -292,7 +292,7 @@ _chk.forEach(function(value, key, map) {
 	$d.find('#' + key).checked = value;	
 });
 
-$d.find('#checkAll').on('click',function(){
+$d.find('#checkAll').on('click',clickAll($d, _chk, $cards) /*function(){
 	let _bool = !_chk.get('checkAll');
 	for (let pair of _chk) {
 	    _chk.set(pair[0], _bool);
@@ -301,7 +301,7 @@ $d.find('#checkAll').on('click',function(){
 
 	$cards = getCards(_chk);
 	
-});
+}*/);
 
 // callback for click checkAll
 function clickAll($d, _chk, $cards) {
