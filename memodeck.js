@@ -438,6 +438,11 @@ for (let _b = 1; _b < 14; _b++) {
 	});
 }
 
+//callback for click check_card_##
+function clickCard($d, _chk, $cards) {
+    
+}
+
 // checks cards
 for (let i = 1; i < 53 ; i++ ) {
 
