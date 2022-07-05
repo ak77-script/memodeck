@@ -303,6 +303,17 @@ $d.find('#checkAll').on('click',function(){
 	
 });
 
+// callback for click checkAll
+function clickAll($d, _chk, $cards) {
+	let _bool = !_chk.get('checkAll');
+	for (let pair of _chk) {
+	    _chk.set(pair[0], _bool);
+	    $d.find('#'+pair[0]).checked = _bool;
+	}
+
+	$cards = getCards(_chk);
+} 
+
 $d.find('#checkSpade').on('click',function(){
 	let _bool = !_chk.get('checkSpade');
 	_chk.set('checkSpade',_bool);
