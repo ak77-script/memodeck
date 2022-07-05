@@ -369,7 +369,7 @@ function clickHeart($d, _chk, $cards) {
 	
 } 
 
-$d.find('#checkClub').on('click',function(){
+$d.find('#checkClub').on('click', clickClub($d, _chk, $cards) /*function(){
 	let _bool = !_chk.get('checkClub');
 	_chk.set('checkClub',_bool);
 	for (let i = 27; i < 40; i++) {
@@ -380,11 +380,20 @@ $d.find('#checkClub').on('click',function(){
 
 	$cards = getCards(_chk);
 	
-});
+}*/);
 
 //callback for click checkClub
-function clickClub() {
+function clickClub($d, _chk, $cards) {
+	let _bool = !_chk.get('checkClub');
+	_chk.set('checkClub',_bool);
+	for (let i = 27; i < 40; i++) {
+		setCheck('check_card_'+i,_bool);
+	}
+	setRanksRow();
+	setCheckAll();
 
+	$cards = getCards(_chk);
+	
 }
 
 $d.find('#checkDiamond').on('click',function(){
