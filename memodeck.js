@@ -29,6 +29,7 @@ $d.findAll = $d.querySelectorAll;
 
 let $cards = [];
 
+// all checks
 const _chk = new Map([
 	['checkAll', true],
 	['checkSpade', true],
