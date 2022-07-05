@@ -353,6 +353,11 @@ $d.find('#checkHeart').on('click',function(){
 	
 });
 
+// callback for click checkHeart
+function clickHeart($d, _chk, $cards) {
+    
+} 
+
 $d.find('#checkClub').on('click',function(){
 	let _bool = !_chk.get('checkClub');
 	_chk.set('checkClub',_bool);
