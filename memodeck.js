@@ -327,6 +327,11 @@ $d.find('#checkSpade').on('click',function(){
 	
 });
 
+// callback for click checkSpade
+function clickSpade() {
+    
+} 
+
 $d.find('#checkHeart').on('click',function(){
 	let _bool = !_chk.get('checkHeart');
 	_chk.set('checkHeart',_bool);
