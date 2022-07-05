@@ -314,7 +314,7 @@ function clickAll($d, _chk, $cards) {
 	$cards = getCards(_chk);
 } 
 
-$d.find('#checkSpade').on('click', clickSpade($d, _chk, $cards)/*function(){
+$d.find('#checkSpade').on('click', clickSpade($d, _chk, $cards) /*function(){
 	let _bool = !_chk.get('checkSpade');
 	_chk.set('checkSpade',_bool);
 	for (let i = 1; i < 14; i++) {
