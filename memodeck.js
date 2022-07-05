@@ -35,329 +35,70 @@ const _chk = new Map([
 	['checkSpade', true],
 	['checkHeart', true],
 	['checkClub', true],
-	['checkDiamond', true]//,
-/*	['check1', true],
-	['check2', true],
-	['check3', true],
-	['check4', true],
-	['check5', true],
-	['check6', true],
-	['check7', true],
-	['check8', true],
-	['check9', true],
-	['check10', true],
-	['check11', true],
-	['check12', true],
-	['check13', true],
-	['check_card_1', true],
-	['check_card_2', true],
-	['check_card_3', true],
-	['check_card_4', true],
-	['check_card_5', true],
-	['check_card_6', true],
-	['check_card_7', true],
-	['check_card_8', true],
-	['check_card_9', true],
-	['check_card_10', true],
-	['check_card_11', true],
-	['check_card_12', true],
-	['check_card_13', true],
-	['check_card_14', true],
-	['check_card_15', true],
-	['check_card_16', true],
-	['check_card_17', true],
-	['check_card_18', true],
-	['check_card_19', true],
-	['check_card_20', true],
-	['check_card_21', true],
-	['check_card_22', true],
-	['check_card_23', true],
-	['check_card_24', true],
-	['check_card_25', true],
-	['check_card_26', true],
-	['check_card_27', true],
-	['check_card_28', true],
-	['check_card_29', true],
-	['check_card_30', true],
-	['check_card_31', true],
-	['check_card_32', true],
-	['check_card_33', true],
-	['check_card_34', true],
-	['check_card_35', true],
-	['check_card_36', true],
-	['check_card_37', true],
-	['check_card_38', true],
-	['check_card_39', true],
-	['check_card_40', true],
-	['check_card_41', true],
-	['check_card_42', true],
-	['check_card_43', true],
-	['check_card_44', true],
-	['check_card_45', true],
-	['check_card_46', true],
-	['check_card_47', true],
-	['check_card_48', true],
-	['check_card_49', true],
-	['check_card_50', true],
-	['check_card_51', true],
-	['check_card_52', true]*/
+	['checkDiamond', true]
   ]);
   
-  for(let i = 1; i < 14; i++)
-  {
+  for(let i = 1; i < 14; i++) {
       _chk.set('check' + i, true);
   }
   
-for(let i = 1; i < 53; i++)
-  {
+for(let i = 1; i < 53; i++) {
       _chk.set('check_card_' + i, true);
   }
-
-/*
-Статья, в которой рассмотрим какие в JavaScript имеются способы создания ассоциативных массивов, а также основные приёмы работы с ними.
-Что такое ассоциативный массив?
-
-Ассоциативный массив – это массив, в котором обращение к значению осуществляется по ключу.
-
-При этом в качестве ключа используется не порядковый номер (индекс), а некоторая строка, которую мы устанавливаем сами.
-
-Таким образом представить ассоциативный массив можно как набор пар «ключ-значение». При этом каждое значение связано с определённым ключом.
-Ассоциативный массив в JavaScript
-
-Для того чтобы получить значение необходимо знать ключ.
-Способы создания ассоциативных массивов
-
-В JavaScript имеются обычные массивы. В них в качества ключа используется порядковый номер (индекс) элемента, а создаются они с использованием квадратных скобок или Array(). Эти массивы не могут использоваться в качестве ассоциативных.
-
-Создание ассоциативных массивов в JavaScript можно выполнить двумя разными способами:
-
-    с помощью объекта Map (появился в языке, начиная с версии ECMAScript 2015);
-    посредством объектов.
-
-Коллекция Map
-
-Map – это коллекция «ключ-значение», которую можно использовать для создания ассоциативных массивов.
-
-Map в отличие от объекта позволяет использовать в качестве ключей значения любых типов как примитивные, так и ссылочные.
-
-Создание пустой коллекции:
-
-// создание пустого ассоциативного массива
-const arr = new Map();
-
-Создании коллекции с инициализацией начальных значений:
-
-// создание ассоциативного массива и помещения в него трех пар «ключ-значение»
-const arr = new Map([
-  ['key1', 'value1'],
-  ['key2', 'value2'],
-  ['key3', 'value3']
-]);
-
-В этом примере строки «key1», «key2» и «key3» являются ключами, а «value1», «value2» и «value3» соответственно их значениями.
-
-Узнать количество элементов в массиве можно осуществить с помощью свойства size:
-
-arr.size; // 3
-
-Добавление элемента в массив (в экземпляр объекта Map) осуществляется с помощью метода set:
-
-// добавить в массив одну пару "ключ-значение"
-arr.set('key4','value4');
-
-// добавить в массив несколько пар "ключ-значение"
-arr.set('key5','value5');
-arr.set('key6','value6');
-// или так
-arr
-  .set('key5','value5')
-  .set('key6','value6');
-
-Если в массиве есть уже такой ключ, то произойдёт установка нового значения, которое будет связано с ним:
-
-arr.set('key1','new value');
-
-Получить значение по ключу выполняется с помощью метода get:
-
-// получить значение, ассоциированное с ключом 'key4'
-arr.get('key4'); // 'value4'
-
-Проверить есть ли ключ в массиве можно посредством метода has:
-
-// есть ли в массиве arr ключ key2
-arr.has('key2'); // true
-
-Удалить из ассоциативного массива (экземпляра объекта Map) элемент по имени ключа можно с помощью метода delete:
-
-arr.delete('key1'); // true
-
-Данный метод возвращает true, если данный ключ существовал в массиве, в противном случае он возвращает false.
-
-if (arr.delete('key1')) {
-  console.log('Запись с ключом "key1" удалена из массива!');
-} else {
-  console.log('Запись с ключом "key1" не найдена в массиве!');
-}
-
-Очистить массив (удалить все элементы) можно выполнить с помощью метода clear.
-
-arr.clear(); // очистим массив arr
-arr.size; // 0 (количество элементов)
-
-Перебор ассоциативного массива (объекта Map) обычно осуществляется с помощью цикла for...of. При этом итерацию можно организовать по ключам, значениям и записям ([key, values]).
-
-Перебор ключей можно осуществить посредством итерируемого объекта MapIterator, возвращаемым методом keys:
-
-for (let key of arr.keys()) {
-  console.log(key);
-}
-
-Для перебора значений можно воспользоваться итерируемым объектом MapIterator, возвращаемым посредством методом values:
-
-for (let value of arr.values()) {
-  console.log(value);
-}
-
-Перебор записей ассоциативного массива с использованием метода entries:
-
-for (let pair of arr.entries()) {
-  // pair - это массив [key, values]
-  console.log(pair[0]); // ключ
-  console.log(pair[1]); // значение
-  console.log(`Ключ = ${pair[0]}, значение = ${pair[1]}`);
-}
-
-Данный метод используется по умолчанию в for...of, поэтому его можно опустить:
-
-for (let pair of arr) {
-  console.log(`Ключ = ${pair[0]}, значение = ${pair[1]}`);
-}
-
-Кроме этого перебрать ассоциативный массив можно с помощью метода forEach.
-
-arr.forEach(function(value,key) {
-  console.log('key = ' + key +', value = ' + value);
-});
-
-
-Перебор ассоциативного массива (объекта Map) обычно осуществляется с помощью цикла for...of. При этом итерацию можно организовать по ключам, значениям и записям ([key, values]).
-
-Перебор ключей можно осуществить посредством итерируемого объекта MapIterator, возвращаемым методом keys:
-
-for (let key of arr.keys()) {
-  console.log(key);
-}
-
-Для перебора значений можно воспользоваться итерируемым объектом MapIterator, возвращаемым посредством методом values:
-
-for (let value of arr.values()) {
-  console.log(value);
-}
-
-Перебор записей ассоциативного массива с использованием метода entries:
-
-for (let pair of arr.entries()) {
-  // pair - это массив [key, values]
-  console.log(pair[0]); // ключ
-  console.log(pair[1]); // значение
-  console.log(`Ключ = ${pair[0]}, значение = ${pair[1]}`);
-}
-
-Данный метод используется по умолчанию в for...of, поэтому его можно опустить:
-
-for (let pair of arr) {
-  console.log(`Ключ = ${pair[0]}, значение = ${pair[1]}`);
-}
-
-Кроме этого перебрать ассоциативный массив можно с помощью метода forEach.
-
-arr.forEach(function(value,key) {
-  console.log('key = ' + key +', value = ' + value);
-});
-
-Преобразовать ассоциативный массив (объект Map) в JSON и обратно можно так:
-
-let arr = new Map([
-  ['question', 'Текст вопроса...'],
-  ['answer1', 'Ответ 1...'],
-  ['answer2', 'Ответ 2...'],
-]);
-// в JSON
-jsonStr = JSON.stringify([...arr]);
-// из JSON в Map
-mapArr = new Map(JSON.parse(jsonStr));
-*/
 
 _chk.forEach(function(value, key, map) {
 	$d.find('#' + key).checked = value;	
 });
 
-$d.find('#checkAll').on('click',clickAll($d, _chk, $cards) /*function(){
-	let _bool = !_chk.get('checkAll');
-	for (let pair of _chk) {
-	    _chk.set(pair[0], _bool);
-	    $d.find('#'+pair[0]).checked = _bool;
-	}
+const $frmChk = {doc: $d, chk: _chk, cards: $cards} 
 
-	$cards = getCards(_chk);
-	
-}*/);
+let $checkAll = $d.find('#checkAll');
+$checkAll.on('click', clickAll, false);
+$checkAll.$p = $frmChk;
 
 // callback for click checkAll
-function clickAll($d, _chk, $cards) {
-	let _bool = !_chk.get('checkAll');
-	for (let pair of _chk) {
-	    _chk.set(pair[0], _bool);
-	    $d.find('#'+pair[0]).checked = _bool;
+function clickAll(_e) {
+	let _o = _e.currentTarget.$p;
+	
+	let _bool = !_o.chk.get('checkAll');
+	for (let pair of _o.chk) {
+	    _o.chk.set(pair[0], _bool);
+	    _o.doc.find('#'+pair[0]).checked = _bool;
 	}
 
-	$cards = getCards(_chk);
+	_o.cards = getCards(_o.chk);
 } 
 
-$d.find('#checkSpade').on('click', clickSpade($d, _chk, $cards) /*function(){
-	let _bool = !_chk.get('checkSpade');
-	_chk.set('checkSpade',_bool);
-	for (let i = 1; i < 14; i++) {
-		setCheck('check_card_'+i,_bool);
-	}
-	setRanksRow();
-	setCheckAll();
-
-	$cards = getCards(_chk);
-	
-}*/);
+let $checkSpade = $d.find('#checkSpade');
+$checkSpade.on('click', clickSpade, false);
+$checkSpade.$p = $frmChk;
 
 // callback for click checkSpade
-function clickSpade($d, _chk, $cards) {
-	let _bool = !_chk.get('checkSpade');
-	_chk.set('checkSpade',_bool);
+function clickSpade(_e) {
+	let _o = _e.currentTarget.$p;
+	
+	let _bool = !_o.chk.get('checkSpade');
+	_o.chk.set('checkSpade',_bool);
 	for (let i = 1; i < 14; i++) {
 		setCheck('check_card_'+i,_bool);
 	}
 	setRanksRow();
 	setCheckAll();
 
-	$cards = getCards(_chk);
+	_o.cards = getCards(_o.chk);
 } 
 
-$d.find('#checkHeart').on('click', clickHeart($d, _chk, $cards) /*function(){
-	let _bool = !_chk.get('checkHeart');
-	_chk.set('checkHeart',_bool);
-	for (let i = 14; i < 27; i++) {
-		setCheck('check_card_'+i,_bool);
-	}
-	setRanksRow();
-	setCheckAll();
-
-	$cards = getCards(_chk);
-	
-}*/);
+let $checkHeart = $d.find('#checkHeart');
+$checkHeart.on('click', clickHeart, false);
+$checkHeart.$p = $frmChk;
 
 // callback for click checkHeart
-function clickHeart($d, _chk, $cards) {
-    let _bool = !_chk.get('checkHeart');
+function clickHeart(_e) {
+	let _o = _e.currentTarget.$p;
 
-	_chk.set('checkHeart',_bool);
+    let _bool = !_o.chk.get('checkHeart');
+
+	_o.chk.set('checkHeart',_bool);
 
 	for (let i = 14; i < 27; i++) {
 		setCheck('check_card_'+i,_bool);
@@ -365,62 +106,45 @@ function clickHeart($d, _chk, $cards) {
 	setRanksRow();
 	setCheckAll();
 
-	$cards = getCards(_chk);
-	
+	_o.cards = getCards(_o.chk);
 } 
 
-$d.find('#checkClub').on('click', clickClub($d, _chk, $cards) /*function(){
-	let _bool = !_chk.get('checkClub');
-	_chk.set('checkClub',_bool);
-	for (let i = 27; i < 40; i++) {
-		setCheck('check_card_'+i,_bool);
-	}
-	setRanksRow();
-	setCheckAll();
-
-	$cards = getCards(_chk);
-	
-}*/);
+let $checkClub = $d.find('#checkClub');
+$checkClub.on('click', clickClub, false);
+$checkClub.$p = $frmChk;
 
 //callback for click checkClub
-function clickClub($d, _chk, $cards) {
-	let _bool = !_chk.get('checkClub');
-	_chk.set('checkClub',_bool);
+function clickClub(_e) {
+	let _o = _e.currentTarget.$p;
+
+	let _bool = !_o.chk.get('checkClub');
+	_o.chk.set('checkClub',_bool);
 	for (let i = 27; i < 40; i++) {
 		setCheck('check_card_'+i,_bool);
 	}
 	setRanksRow();
 	setCheckAll();
 
-	$cards = getCards(_chk);
-	
+	_o.cards = getCards(_o.chk);
 }
 
-$d.find('#checkDiamond').on('click', clickDiamond($d, _chk, $cards) /*function(){
-	let _bool = !_chk.get('checkDiamond');
-	_chk.set('checkDiamond',_bool);
-	for (let i = 40; i < 53; i++) {
-		setCheck('check_card_'+i,_bool);
-	}
-	setRanksRow();
-	setCheckAll();
-
-	$cards = getCards(_chk);
-	
-}*/);
+let $checkDiamond = $d.find('#checkDiamond');
+$checkDiamond.on('click', clickDiamond, false);
+$checkDiamond.$p = $frmChk;
 
 //callback for click checkDiamond 
-function clickDiamond($d, _chk, $cards) {
-	let _bool = !_chk.get('checkDiamond');
-	_chk.set('checkDiamond',_bool);
+function clickDiamond(_e) {
+	let _o = _e.currentTarget.$p;
+
+	let _bool = !_o.chk.get('checkDiamond');
+	_o.chk.set('checkDiamond',_bool);
 	for (let i = 40; i < 53; i++) {
 		setCheck('check_card_'+i,_bool);
 	}
 	setRanksRow();
 	setCheckAll();
 
-	$cards = getCards(_chk);
-	
+	_o.cards = getCards(_o.chk);
 }
 
 for (let _b = 1; _b < 14; _b++) {
@@ -438,10 +162,7 @@ for (let _b = 1; _b < 14; _b++) {
 	});
 }
 
-//callback for click check_card_##
-function clickCard($d, _chk, $cards) {
-    
-}
+
 
 // checks cards
 for (let i = 1; i < 53 ; i++ ) {
