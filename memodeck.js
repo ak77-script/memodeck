@@ -147,7 +147,17 @@ function clickDiamond(_e) {
 	_o.cards = getCards(_o.chk);
 }
 
+// click ranks
 for (let _b = 1; _b < 14; _b++) {
+    
+    let $checkRank = $d.find('#check'+_b);
+
+$checbRank.on('click', clickRank, false);
+
+$frmChk._b = _b;
+
+$checkRank.$p = $frmChk;
+    
 	$d.find('#check'+_b).on('click',function(){
 		let _bool = !_chk.get('check'+_b);
 		_chk.set('check'+_b,_bool);
