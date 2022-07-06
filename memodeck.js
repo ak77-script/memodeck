@@ -152,12 +152,12 @@ for (let _b = 1; _b < 14; _b++) {
     
     let $checkRank = $d.find('#check'+_b);
 
-$checbRank.on('click', clickRank, false);
+    $checkRank.on('click', clickRank, false);
 
-$frmChk._b = _b;
+    $frmChk._b = _b;
 
-$checkRank.$p = $frmChk;
-    
+    $checkRank.$p = $frmChk;
+/*   
 	$d.find('#check'+_b).on('click',function(){
 		let _bool = !_chk.get('check'+_b);
 		_chk.set('check'+_b,_bool);
@@ -169,9 +169,24 @@ $checkRank.$p = $frmChk;
 
 		$cards = getCards(_chk);
 		
-	});
+	});*/
 }
 
+function clickRank(_e) {
+    let _o = _e.currentTarget.$p;
+    
+    let _bool = !_o.chk.get('check'+_o._b);
+
+	_o.chk.set('check'+_o._b,_bool);
+
+	for (let i = _o._b; i < 53; i=i+13) {
+		setCheck('check_card_'+i,_bool);
+	}
+	setSuitsRow();
+	setCheckAll();
+
+	_o.cards = getCards(_o.chk);
+}
 
 
 // checks cards
