@@ -207,6 +207,10 @@ for (let i = 1; i < 53 ; i++ ) {
 
 }
 
+function clickCard(_e) {
+    
+} 
+
 function setSuitsNRanksRows(value){
 	let suit = getSuit(value);
 	let rank = getRank(value);
