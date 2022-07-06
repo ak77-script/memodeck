@@ -208,7 +208,14 @@ for (let i = 1; i < 53 ; i++ ) {
 }
 
 function clickCard(_e) {
+    let _o = _e.currentTarget.$p;
     
+	let _bool = !_o.chk.get('check_card_'+ o._i);
+	_o.chk.set('check_card_'+ _o._i,_bool);
+	setSuitsNRanksRows(_o._i);
+	setCheckAll();
+
+	_o.cards = getCards(_o.chk);
 } 
 
 function setSuitsNRanksRows(value){
