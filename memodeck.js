@@ -30,7 +30,7 @@ $d.findAll = $d.querySelectorAll;
 let $cards = [];
 
 // all checks
-const _chk = new Map([
+const $chk = new Map([
 	['checkAll', true],
 	['checkSpade', true],
 	['checkHeart', true],
@@ -39,18 +39,18 @@ const _chk = new Map([
   ]);
   
   for(let i = 1; i < 14; i++) {
-      _chk.set('check' + i, true);
+      $chk.set('check' + i, true);
   }
   
 for(let i = 1; i < 53; i++) {
-      _chk.set('check_card_' + i, true);
+      $chk.set('check_card_' + i, true);
   }
 
-_chk.forEach(function(value, key, map) {
+$chk.forEach(function(value, key, map) {
 	$d.find('#' + key).checked = value;	
 });
 
-const $frmChk = {doc: $d, chk: _chk, cards: $cards} 
+const $frmChk = {doc: $d, chk: $chk, cards: $cards} 
 
 let $checkAll = $d.find('#checkAll');
 $checkAll.on('click', clickAll, false);
@@ -196,12 +196,12 @@ for (let i = 1; i < 53 ; i++ ) {
 	let $card = $d.find('#check_card_'+ i);
 
 	$card.on('click',function(){
-		let _bool = !_chk.get('check_card_'+ i);
-		_chk.set('check_card_'+ i,_bool);
+		let _bool = !$chk.get('check_card_'+ i);
+		$chk.set('check_card_'+ i,_bool);
 		setSuitsNRanksRows(i);
 		setCheckAll();
 
-		$cards = getCards(_chk);
+		$cards = getCards($chk);
 		
 	});
 
@@ -216,25 +216,25 @@ function setSuitsNRanksRows(value){
 
 	let sumRanks = sumChecks(0,rank) == 4 ? true : false;
 
-	_chk.set(checkSuit,sumSuits);
+	$chk.set(checkSuit,sumSuits);
 	$d.find('#'+checkSuit).checked = sumSuits;
-	_chk.set('check'+rank,sumRanks);
+	$chk.set('check'+rank,sumRanks);
 	$d.find('#check'+rank).checked = sumRanks;
 }
 
 function setCheckAll() {
 	let sum = sumChecks() == 52 ? true : false;
-	_chk.set('checkAll',sum);
+	$chk.set('checkAll',sum);
 	$d.find('#checkAll').checked = sum;
 }
 
 function setRanksRow() {
 	for (let i = 1; i < 14; i = i + 1) {
 		if (sumChecks(0,i) < 4) {
-			_chk.set('check'+i,false);
+			$chk.set('check'+i,false);
 			$d.find('#check'+i).checked = false;
 		} else {
-			_chk.set('check'+i,true);
+			$chk.set('check'+i,true);
 			$d.find('#check'+i).checked = true;
 		}
 	}
@@ -247,34 +247,34 @@ function setSuitsRow() {
 	let _diamond = sumChecks(4);
 	
 	if (_spade < 13) {
-		_chk.set('checkSpade',false);
+		$chk.set('checkSpade',false);
 		$d.find('#checkSpade').checked = false;
 	} else {
-		_chk.set('checkSpade',true);
+		$chk.set('checkSpade',true);
 		$d.find('#checkSpade').checked = true;
 	}
 
 	if (_heart < 13) {
-		_chk.set('checkHeart',false);
+		$chk.set('checkHeart',false);
 		$d.find('#checkHeart').checked = false;
 	} else {
-		_chk.set('checkHeart',true);
+		$chk.set('checkHeart',true);
 		$d.find('#checkHeart').checked = true;
 	}
 	
 	if (_club < 13) {
-		_chk.set('checkClub',false);
+		$chk.set('checkClub',false);
 		$d.find('#checkClub').checked = false;
 	} else {
-		_chk.set('checkClub',true);
+		$chk.set('checkClub',true);
 		$d.find('#checkClub').checked = true;
 	}
 	
 	if (_diamond < 13) {
-		_chk.set('checkDiamond',false);
+		$chk.set('checkDiamond',false);
 		$d.find('#checkDiamond').checked = false;
 	} else {
-		_chk.set('checkDiamond',true);
+		$chk.set('checkDiamond',true);
 		$d.find('#checkDiamond').checked = true;
 	}
 }
@@ -284,20 +284,20 @@ function sumChecks(suit = 0, rank = 0, value = 0) {
 
 	if (suit==0 && rank==0 && value == 0)  {
 		for (let i = 1; i < 53; i = i + 1) {
-			sum = sum + _chk.get('check_card_' + i);
+			sum = sum + $chk.get('check_card_' + i);
 		}
 	} else if (suit > 0 && rank == 0 && value == 0) {
 		for (let i = (suit - 1) * 13 + 1; i < suit * 13 + 1; i = i + 1) {
-			sum = sum + _chk.get('check_card_' + i);
+			sum = sum + $chk.get('check_card_' + i);
 		}
 	} else if (suit == 0 && rank > 0 && value == 0) {
 		for (let i = rank; i < 53; i = i + 13) {
-			sum = sum + _chk.get('check_card_' + i);
+			sum = sum + $chk.get('check_card_' + i);
 		}
 	} else if (suit == 0 && rank == 0 && value > 0) {
 		// дублирует первый вариант, думаю можно удалить
 		for (let i = 1; i < 53; i = i + 1) {
-			sum = sum + _chk.get('check_card_' + i);
+			sum = sum + $chk.get('check_card_' + i);
 		}
 	}
 
@@ -315,7 +315,7 @@ function getSuit(value) {
 }
 
 function setCheck(key, value) {
-	_chk.set(key,value); $d.find('#'+key).checked = value;
+	$chk.set(key,value); $d.find('#'+key).checked = value;
 }
 
 // getStart
@@ -329,7 +329,7 @@ function getCards(_chk) {
 
 	for (let i = 1 ; i < 53; i++) {
 		let _key = 'check_card_' + i;
-		let _val = _chk.get(_key);
+		let _val = $chk.get(_key);
 		if (_val) _arr.push(i);
 	}
 	console.log(_arr); // для отладки
