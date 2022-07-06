@@ -172,6 +172,7 @@ for (let _b = 1; _b < 14; _b++) {
 	});*/
 }
 
+// callback for click check##
 function clickRank(_e) {
     let _o = _e.currentTarget.$p;
     
