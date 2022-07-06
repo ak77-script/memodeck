@@ -193,6 +193,15 @@ function clickRank(_e) {
 // checks cards
 for (let i = 1; i < 53 ; i++ ) {
 
+    let $card = $d.find('#check_card_'+i);
+
+    $card.on('click', clickCard, false);
+
+    $frmChk._i = i;
+
+    $checkRank.$p = $frmChk;
+
+/*
 	let $card = $d.find('#check_card_'+ i);
 
 	$card.on('click',function(){
@@ -203,7 +212,7 @@ for (let i = 1; i < 53 ; i++ ) {
 
 		$cards = getCards($chk);
 		
-	});
+	});*/
 
 }
 
