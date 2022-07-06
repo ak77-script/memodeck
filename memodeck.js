@@ -38,7 +38,7 @@ const $chk = new Map([
 	['checkDiamond', true]
   ]);
   
-  for(let i = 1; i < 14; i++) {
+for(let i = 1; i < 14; i++) {
       $chk.set('check' + i, true);
   }
   
