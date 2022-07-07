@@ -137,7 +137,7 @@ function clickSpade(_e) {
 	for (let i = 1; i < 14; i++) {
 		setCheck('check_card_'+i,_bool);
 	}
-	setRanksRow();
+	setRanksRow(_o);
 	setCheckAll();
 
 	_o.cards = getCards(_o.chk);
