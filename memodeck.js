@@ -260,9 +260,9 @@ function setSuitsNRanksRows(value,_o={}){
 	let rank = getRank(value);
 
 	let checkSuit = suit == 1 ? 'checkSpade' : suit == 2 ? 'checkHeart' : suit == 3 ? 'checkClub' : 'checkDiamond';
-	let sumSuits = sumChecks(suit,0,0,_o) == 13 ? true : false;
+	let sumSuits = sumChecks(_o,suit) == 13 ? true : false;
 
-	let sumRanks = sumChecks(0,rank,0,_o) == 4 ? true : false;
+	let sumRanks = sumChecks(_o,0,rank) == 4 ? true : false;
 
 	$chk.set(checkSuit,sumSuits);
 	$d.find('#'+checkSuit).checked = sumSuits;
@@ -271,7 +271,7 @@ function setSuitsNRanksRows(value,_o={}){
 }
 
 function setCheckAll(_o={}) {
-	let sum = sumChecks(0,0,0,_o) == 52 ? true : false;
+	let sum = sumChecks(_o) == 52 ? true : false;
 	$chk.set('checkAll',sum);
 	$d.find('#checkAll').checked = sum;
 }
