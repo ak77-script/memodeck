@@ -332,20 +332,20 @@ function sumChecks(_o={},suit = 0, rank = 0, value = 0) {
 
 	if (suit==0 && rank==0 && value == 0)  {
 		for (let i = 1; i < 53; i = i + 1) {
-			sum = sum + $chk.get('check_card_' + i);
+			sum = sum + _o.chk.get('check_card_' + i);
 		}
 	} else if (suit > 0 && rank == 0 && value == 0) {
 		for (let i = (suit - 1) * 13 + 1; i < suit * 13 + 1; i = i + 1) {
-			sum = sum + $chk.get('check_card_' + i);
+			sum = sum + _o.chk.get('check_card_' + i);
 		}
 	} else if (suit == 0 && rank > 0 && value == 0) {
 		for (let i = rank; i < 53; i = i + 13) {
-			sum = sum + $chk.get('check_card_' + i);
+			sum = sum + _o.chk.get('check_card_' + i);
 		}
 	} else if (suit == 0 && rank == 0 && value > 0) {
 		// дублирует первый вариант, думаю можно удалить
 		for (let i = 1; i < 53; i = i + 1) {
-			sum = sum + $chk.get('check_card_' + i);
+			sum = sum + _o.chk.get('check_card_' + i);
 		}
 	}
 
@@ -363,7 +363,7 @@ function getSuit(value) {
 }
 
 function setCheck(key, value, _o={}) {
-	$chk.set(key,value); $d.find('#'+key).checked = value;
+	_o.chk.set(key,value); _o.doc.find('#'+key).checked = value;
 }
 
 // getStart
