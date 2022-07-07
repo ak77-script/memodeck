@@ -278,7 +278,7 @@ function setCheckAll(_o={}) {
 
 function setRanksRow(_o={}) {
 	for (let i = 1; i < 14; i = i + 1) {
-		if (sumChecks(0,i) < 4) {
+		if (sumChecks(0,i,0,_o) < 4) {
 			$chk.set('check'+i,false);
 			$d.find('#check'+i).checked = false;
 		} else {
@@ -289,9 +289,9 @@ function setRanksRow(_o={}) {
 }
 
 function setSuitsRow(_o={}) {
-	let _spade = sumChecks(1);
-	let _heart = sumChecks(2);
-	let _club = sumChecks(3);
+	let _spade = sumChecks(1,0,0,_o);
+	let _heart = sumChecks(2,0,0,_o);
+	let _club = sumChecks(3,0,0,_o);
 	let _diamond = sumChecks(4);
 	
 	if (_spade < 13) {
