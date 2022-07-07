@@ -322,8 +322,8 @@ function setSuitsRow(_o={}) {
 		_o.chk.set('checkDiamond',false);
 		_o.doc.find('#checkDiamond').checked = false;
 	} else {
-		$chk.set('checkDiamond',true);
-		$d.find('#checkDiamond').checked = true;
+		_o.chk.set('checkDiamond',true);
+		_o.doc.find('#checkDiamond').checked = true;
 	}
 }
 
