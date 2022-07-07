@@ -264,10 +264,10 @@ function setSuitsNRanksRows(value,_o={}){
 
 	let sumRanks = sumChecks(_o,0,rank) == 4 ? true : false;
 
-	$chk.set(checkSuit,sumSuits);
-	$d.find('#'+checkSuit).checked = sumSuits;
-	$chk.set('check'+rank,sumRanks);
-	$d.find('#check'+rank).checked = sumRanks;
+	_o.chk.set(checkSuit,sumSuits);
+	_o.doc.find('#'+checkSuit).checked = sumSuits;
+	_o.chk.set('check'+rank,sumRanks);
+	_o.doc.find('#check'+rank).checked = sumRanks;
 }
 
 function setCheckAll(_o={}) {
