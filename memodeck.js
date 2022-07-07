@@ -292,7 +292,7 @@ function setSuitsRow(_o={}) {
 	let _spade = sumChecks(1,0,0,_o);
 	let _heart = sumChecks(2,0,0,_o);
 	let _club = sumChecks(3,0,0,_o);
-	let _diamond = sumChecks(4);
+	let _diamond = sumChecks(4,0,0_o);
 	
 	if (_spade < 13) {
 		$chk.set('checkSpade',false);
@@ -327,7 +327,7 @@ function setSuitsRow(_o={}) {
 	}
 }
 
-function sumChecks(suit = 0, rank = 0, value = 0, _o={}) {
+function sumChecks(_o={},suit = 0, rank = 0, value = 0) {
 	let sum = 0;
 
 	if (suit==0 && rank==0 && value == 0)  {
