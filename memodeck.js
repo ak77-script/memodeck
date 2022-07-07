@@ -319,8 +319,8 @@ function setSuitsRow(_o={}) {
 	}
 	
 	if (_diamond < 13) {
-		$chk.set('checkDiamond',false);
-		$d.find('#checkDiamond').checked = false;
+		_o.chk.set('checkDiamond',false);
+		_o.doc.find('#checkDiamond').checked = false;
 	} else {
 		$chk.set('checkDiamond',true);
 		$d.find('#checkDiamond').checked = true;
