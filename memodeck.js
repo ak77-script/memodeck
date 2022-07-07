@@ -158,8 +158,8 @@ function clickHeart(_e) {
 	for (let i = 14; i < 27; i++) {
 		setCheck('check_card_'+i,_bool);
 	}
-	setRanksRow();
-	setCheckAll();
+	setRanksRow(_o);
+	setCheckAll(_o);
 
 	_o.cards = getCards(_o.chk);
 } 
@@ -177,8 +177,8 @@ function clickClub(_e) {
 	for (let i = 27; i < 40; i++) {
 		setCheck('check_card_'+i,_bool);
 	}
-	setRanksRow();
-	setCheckAll();
+	setRanksRow(_o);
+	setCheckAll(_o);
 
 	_o.cards = getCards(_o.chk);
 }
@@ -196,8 +196,8 @@ function clickDiamond(_e) {
 	for (let i = 40; i < 53; i++) {
 		setCheck('check_card_'+i,_bool);
 	}
-	setRanksRow();
-	setCheckAll();
+	setRanksRow(_o);
+	setCheckAll(_o);
 
 	_o.cards = getCards(_o.chk);
 }
@@ -224,8 +224,8 @@ function clickRank(_e) {
 	for (let i = _b; i < 53; i=i+13) {
 		setCheck('check_card_'+i,_bool);
 	}
-	setSuitsRow();
-	setCheckAll();
+	setSuitsRow(_o);
+	setCheckAll(_o);
 
 	_o.cards = getCards(_o.chk);
 }
