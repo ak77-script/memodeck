@@ -227,7 +227,7 @@ function clickRank(_e) {
 	setSuitsRow(_o);
 	setCheckAll(_o);
 
-	_o.cards = getCards(_o.chk);
+	_o.cards = getCards(_o);
 }
 
 
