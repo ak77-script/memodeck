@@ -372,13 +372,13 @@ $d.find('#getStart').on('click', function () {
 	$d.find('#card').style['display'] = "block";
 });
 
-function getCards(_chk) {
+function getCards(_o) {
 	// ?????? _chk
 	let _arr = [];
 
 	for (let i = 1 ; i < 53; i++) {
 		let _key = 'check_card_' + i;
-		let _val = $chk.get(_key);
+		let _val = _o.chk.get(_key);
 		if (_val) _arr.push(i);
 	}
 	console.log(_arr); // для отладки
