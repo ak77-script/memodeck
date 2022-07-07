@@ -104,6 +104,7 @@ $chk.forEach(function(value, key, map) {
 	$d.find('#' + key).checked = value;	
 });
 
+// checks form
 const $frmChk = {doc: $d, chk: $chk, cards: $cards} 
 
 let $checkAll = $d.find('#checkAll');
