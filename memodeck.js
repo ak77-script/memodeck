@@ -303,8 +303,8 @@ function setSuitsRow(_o={}) {
 	}
 
 	if (_heart < 13) {
-		$chk.set('checkHeart',false);
-		$d.find('#checkHeart').checked = false;
+		_o.chk.set('checkHeart',false);
+		_o.doc.find('#checkHeart').checked = false;
 	} else {
 		$chk.set('checkHeart',true);
 		$d.find('#checkHeart').checked = true;
