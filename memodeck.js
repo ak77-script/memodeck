@@ -279,11 +279,11 @@ function setCheckAll(_o={}) {
 function setRanksRow(_o={}) {
 	for (let i = 1; i < 14; i = i + 1) {
 		if (sumChecks(_o,0,i) < 4) {
-			$chk.set('check'+i,false);
-			$d.find('#check'+i).checked = false;
+			_o.chk.set('check'+i,false);
+			_o.doc.find('#check'+i).checked = false;
 		} else {
-			$chk.set('check'+i,true);
-			$d.find('#check'+i).checked = true;
+			_o.chk.set('check'+i,true);
+			_o.doc.find('#check'+i).checked = true;
 		}
 	}
 }
@@ -295,11 +295,11 @@ function setSuitsRow(_o={}) {
 	let _diamond = sumChecks(_o,4);
 	
 	if (_spade < 13) {
-		$chk.set('checkSpade',false);
-		$d.find('#checkSpade').checked = false;
+		_o.chk.set('checkSpade',false);
+		_o.doc.find('#checkSpade').checked = false;
 	} else {
-		$chk.set('checkSpade',true);
-		$d.find('#checkSpade').checked = true;
+		_o.chk.set('checkSpade',true);
+		_o.doc.find('#checkSpade').checked = true;
 	}
 
 	if (_heart < 13) {
