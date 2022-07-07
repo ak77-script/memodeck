@@ -252,7 +252,7 @@ function clickCard(_e) {
 	setSuitsNRanksRows(_i,_o);
 	setCheckAll(_o);
 
-	_o.cards = getCards(_o.chk);
+	_o.cards = getCards(_o);
 } 
 
 function setSuitsNRanksRows(value,_o={}){
