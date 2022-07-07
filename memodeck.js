@@ -249,8 +249,8 @@ function clickCard(_e) {
     
 	let _bool = !_o.chk.get('check_card_'+ _i);
 	_o.chk.set('check_card_'+ _i,_bool);
-	setSuitsNRanksRows(_i);
-	setCheckAll();
+	setSuitsNRanksRows(_i,_o);
+	setCheckAll(_o);
 
 	_o.cards = getCards(_o.chk);
 } 
