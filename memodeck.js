@@ -121,7 +121,7 @@ function clickAll(_e) {
 	    _o.doc.find('#'+pair[0]).checked = _bool;
 	}
 
-	_o.cards = getCards(_o.chk);
+	_o.cards = getCards(_o);
 } 
 
 let $checkSpade = $d.find('#checkSpade');
@@ -140,7 +140,7 @@ function clickSpade(_e) {
 	setRanksRow(_o);
 	setCheckAll(_o);
 
-	_o.cards = getCards(_o.chk);
+	_o.cards = getCards(_o);
 } 
 
 let $checkHeart = $d.find('#checkHeart');
@@ -161,7 +161,7 @@ function clickHeart(_e) {
 	setRanksRow(_o);
 	setCheckAll(_o);
 
-	_o.cards = getCards(_o.chk);
+	_o.cards = getCards(_o);
 } 
 
 let $checkClub = $d.find('#checkClub');
@@ -180,7 +180,7 @@ function clickClub(_e) {
 	setRanksRow(_o);
 	setCheckAll(_o);
 
-	_o.cards = getCards(_o.chk);
+	_o.cards = getCards(_o);
 }
 
 let $checkDiamond = $d.find('#checkDiamond');
@@ -199,7 +199,7 @@ function clickDiamond(_e) {
 	setRanksRow(_o);
 	setCheckAll(_o);
 
-	_o.cards = getCards(_o.chk);
+	_o.cards = getCards(_o);
 }
 
 // click ranks
