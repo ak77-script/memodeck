@@ -306,8 +306,8 @@ function setSuitsRow(_o={}) {
 		_o.chk.set('checkHeart',false);
 		_o.doc.find('#checkHeart').checked = false;
 	} else {
-		$chk.set('checkHeart',true);
-		$d.find('#checkHeart').checked = true;
+		_o.chk.set('checkHeart',true);
+		_o.doc.find('#checkHeart').checked = true;
 	}
 	
 	if (_club < 13) {
