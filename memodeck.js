@@ -271,7 +271,7 @@ function setSuitsNRanksRows(value,_o={}){
 }
 
 function setCheckAll(_o={}) {
-	let sum = sumChecks() == 52 ? true : false;
+	let sum = sumChecks(0,0,0,_o) == 52 ? true : false;
 	$chk.set('checkAll',sum);
 	$d.find('#checkAll').checked = sum;
 }
