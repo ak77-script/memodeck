@@ -138,7 +138,7 @@ function clickSpade(_e) {
 		setCheck('check_card_'+i,_bool);
 	}
 	setRanksRow(_o);
-	setCheckAll();
+	setCheckAll(_o);
 
 	_o.cards = getCards(_o.chk);
 } 
