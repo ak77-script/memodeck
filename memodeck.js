@@ -311,11 +311,11 @@ function setSuitsRow(_o={}) {
 	}
 	
 	if (_club < 13) {
-		$chk.set('checkClub',false);
-		$d.find('#checkClub').checked = false;
+		_o.chk.set('checkClub',false);
+		_o.doc.find('#checkClub').checked = false;
 	} else {
-		$chk.set('checkClub',true);
-		$d.find('#checkClub').checked = true;
+		_o.chk.set('checkClub',true);
+		_o.doc.find('#checkClub').checked = true;
 	}
 	
 	if (_diamond < 13) {
