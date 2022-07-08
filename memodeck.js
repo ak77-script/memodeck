@@ -264,7 +264,7 @@ function setCheckAll(_o={}) {
 function setRanksRow(_o={}) {
 	for (let i = 1; i < 14; i = i + 1) {
 	    
-	    (sumChecks(_o,0,i)<4) ? setCheck('check'+i, false, _o) : setCheck('check'+i, true, _o)
+	    (sumChecks(_o,0,i)<4) ? setCheck('check'+i, false, _o) : setCheck('check'+i, true, _o);
 	    /*
 		if (sumChecks(_o,0,i) < 4) {
 			setCheck('check'+i,false,_o);
