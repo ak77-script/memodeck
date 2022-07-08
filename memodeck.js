@@ -98,7 +98,11 @@ for(let i = 1; i < 53; i++) $chk.set('check_card_' + i, true);
 
 $chk.forEach(function(value, key, map) {$d.find('#' + key).checked = value });
 
-// checks form
+/*
+===≠===============
+    form Checks
+===================
+*/
 const $frmChk = {doc: $d, chk: $chk, cards: $cards} 
 
 let $checkAll = $d.find('#checkAll');
@@ -351,6 +355,19 @@ function sumChecks(_o={},suit = 0, rank = 0, value = 0) {
 	return sum;
 }
 
+function setCheck(key, value, _o={}) {
+	_o.chk.set(key,value); _o.doc.find('#'+key).checked = value;
+}
+
+
+/*
+
+===≠===============
+
+    / form Checks
+===================
+*/
+
 function getRank(value) {
 	let rank = (value-1) % 13 + 1;
 	return rank;
@@ -359,10 +376,6 @@ function getRank(value) {
 function getSuit(value) {
 	let suit = (value-1) / 13 | 0;
 	return suit + 1;
-}
-
-function setCheck(key, value, _o={}) {
-	_o.chk.set(key,value); _o.doc.find('#'+key).checked = value;
 }
 
 // getStart
