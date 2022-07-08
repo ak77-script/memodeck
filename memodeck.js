@@ -287,18 +287,22 @@ function setSuitsRow(_o={}) {
 	let _diamond = sumChecks(_o,4);
 	
 	(_spade < 13) ? 
-	    setCheck('checkSpade', false, _o) : setCheck('checkSpade', false, _o);
+	    setCheck('checkSpade', false, _o) : setCheck('checkSpade', true, _o);
 	/*if (_spade < 13) {
 		setCheck('checkSpade',false,_o);
 	} else {
 		setCheck('checkSpade',true,_o);
 	}*/
 
+
+	(_heart < 13) ? 
+	    setCheck('checkHeart', false, _o) : setCheck('checkHeart', true, _o);
+	    /*
 	if (_heart < 13) {
 		setCheck('checkHeart',false,_o);
 	} else {
 		setCheck('checkHeart',true,_o);
-	}
+	}*/
 	
 	if (_club < 13) {
 		setCheck('checkClub',false,_o);
