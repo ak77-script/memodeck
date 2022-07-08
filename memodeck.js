@@ -286,11 +286,13 @@ function setSuitsRow(_o={}) {
 	let _club = sumChecks(_o,3);
 	let _diamond = sumChecks(_o,4);
 	
-	if (_spade < 13) {
+	(_spade < 13) ? 
+	    setCheck('checkSpade', false, _o) : setCheck('checkSpade', false, _o);
+	/*if (_spade < 13) {
 		setCheck('checkSpade',false,_o);
 	} else {
 		setCheck('checkSpade',true,_o);
-	}
+	}*/
 
 	if (_heart < 13) {
 		setCheck('checkHeart',false,_o);
