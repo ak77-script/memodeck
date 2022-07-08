@@ -305,7 +305,7 @@ function setSuitsRow(_o={}) {
 	}*/
 	
 	(_club < 13) ? 
-	    setCheck('checkClub', false, _o) : setCheck(checkClub', true, _o);
+	    setCheck('checkClub', false, _o) : setCheck('checkClub', true, _o);
 	
 	/*
 	if (_club < 13) {
@@ -314,11 +314,17 @@ function setSuitsRow(_o={}) {
 		setCheck('checkClub',true,_o);
 	}*/
 	
+	
+	(_diamond < 13) ? 
+
+	    setCheck('checkDiamond', false, _o) : setCheck('checkDiamond', true, _o);
+	
+	/*
 	if (_diamond < 13) {
 		setCheck('checkDiamond',false,_o);
 	} else {
 		setCheck('checkDiamond',true,_o);
-	}
+	}*/
 }
 
 function sumChecks(_o={},suit = 0, rank = 0, value = 0) {
