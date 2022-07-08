@@ -92,17 +92,11 @@ const $chk = new Map([
 	['checkDiamond', true]
   ]);
   
-for(let i = 1; i < 14; i++) {
-      $chk.set('check' + i, true);
-  }
+for(let i = 1; i < 14; i++) $chk.set('check' + i, true);
   
-for(let i = 1; i < 53; i++) {
-      $chk.set('check_card_' + i, true);
-  }
+for(let i = 1; i < 53; i++) $chk.set('check_card_' + i, true);
 
-$chk.forEach(function(value, key, map) {
-	$d.find('#' + key).checked = value;	
-});
+$chk.forEach(function(value, key, map) {$d.find('#' + key).checked = value });
 
 // checks form
 const $frmChk = {doc: $d, chk: $chk, cards: $cards} 
@@ -134,9 +128,8 @@ function clickSpade(_e) {
 	
 	let _bool = !_o.chk.get('checkSpade');
 	_o.chk.set('checkSpade',_bool);
-	for (let i = 1; i < 14; i++) {
-		setCheck('check_card_'+i,_bool);
-	}
+	for (let i = 1; i < 14; i++) setCheck('check_card_'+i,_bool,_o);
+
 	setRanksRow(_o);
 	setCheckAll(_o);
 
@@ -155,9 +148,8 @@ function clickHeart(_e) {
 
 	_o.chk.set('checkHeart',_bool);
 
-	for (let i = 14; i < 27; i++) {
-		setCheck('check_card_'+i,_bool);
-	}
+	for (let i = 14; i < 27; i++) setCheck('check_card_'+i,_bool,_o);
+	
 	setRanksRow(_o);
 	setCheckAll(_o);
 
@@ -174,9 +166,8 @@ function clickClub(_e) {
 
 	let _bool = !_o.chk.get('checkClub');
 	_o.chk.set('checkClub',_bool);
-	for (let i = 27; i < 40; i++) {
-		setCheck('check_card_'+i,_bool);
-	}
+	for (let i = 27; i < 40; i++) setCheck('check_card_'+i,_bool,_o);
+	
 	setRanksRow(_o);
 	setCheckAll(_o);
 
@@ -193,9 +184,8 @@ function clickDiamond(_e) {
 
 	let _bool = !_o.chk.get('checkDiamond');
 	_o.chk.set('checkDiamond',_bool);
-	for (let i = 40; i < 53; i++) {
-		setCheck('check_card_'+i,_bool);
-	}
+	for (let i = 40; i < 53; i++) setCheck('check_card_'+i,_bool,_o);
+	
 	setRanksRow(_o);
 	setCheckAll(_o);
 
@@ -221,15 +211,13 @@ function clickRank(_e) {
 
     let _bool = !_o.chk.get('check'+_b);
 	_o.chk.set('check'+_b,_bool);
-	for (let i = _b; i < 53; i=i+13) {
-		setCheck('check_card_'+i,_bool);
-	}
+	for (let i = _b; i < 53; i=i+13) setCheck('check_card_'+i,_bool,_o);
+	
 	setSuitsRow(_o);
 	setCheckAll(_o);
 
 	_o.cards = getCards(_o);
 }
-
 
 // checks cards
 for (let i = 1; i < 53 ; i++ ) {
@@ -264,26 +252,21 @@ function setSuitsNRanksRows(value,_o={}){
 
 	let sumRanks = sumChecks(_o,0,rank) == 4 ? true : false;
 
-	_o.chk.set(checkSuit,sumSuits);
-	_o.doc.find('#'+checkSuit).checked = sumSuits;
-	_o.chk.set('check'+rank,sumRanks);
-	_o.doc.find('#check'+rank).checked = sumRanks;
+	setCheck(checkSuit,sumSuits,_o);
+	setCheck('check'+rank,sumRanks,_o);
 }
 
 function setCheckAll(_o={}) {
 	let sum = sumChecks(_o) == 52 ? true : false;
-	_o.chk.set('checkAll',sum);
-	_o.doc.find('#checkAll').checked = sum;
+	setCheck('checkAll',sum,_o);
 }
 
 function setRanksRow(_o={}) {
 	for (let i = 1; i < 14; i = i + 1) {
 		if (sumChecks(_o,0,i) < 4) {
-			_o.chk.set('check'+i,false);
-			_o.doc.find('#check'+i).checked = false;
+			setCheck('check'+i,false,_o);
 		} else {
-			_o.chk.set('check'+i,true);
-			_o.doc.find('#check'+i).checked = true;
+			setCheck('check'+i,true,_o);
 		}
 	}
 }
@@ -295,35 +278,27 @@ function setSuitsRow(_o={}) {
 	let _diamond = sumChecks(_o,4);
 	
 	if (_spade < 13) {
-		_o.chk.set('checkSpade',false);
-		_o.doc.find('#checkSpade').checked = false;
+		setCheck('checkSpade',false,_o);
 	} else {
-		_o.chk.set('checkSpade',true);
-		_o.doc.find('#checkSpade').checked = true;
+		setCheck('checkSpade',true,_o);
 	}
 
 	if (_heart < 13) {
-		_o.chk.set('checkHeart',false);
-		_o.doc.find('#checkHeart').checked = false;
+		setCheck('checkHeart',false,_o);
 	} else {
-		_o.chk.set('checkHeart',true);
-		_o.doc.find('#checkHeart').checked = true;
+		setCheck('checkHeart',true,_o);
 	}
 	
 	if (_club < 13) {
-		_o.chk.set('checkClub',false);
-		_o.doc.find('#checkClub').checked = false;
+		setCheck('checkClub',false,_o);
 	} else {
-		_o.chk.set('checkClub',true);
-		_o.doc.find('#checkClub').checked = true;
+		setCheck('checkClub',true,_o);
 	}
 	
 	if (_diamond < 13) {
-		_o.chk.set('checkDiamond',false);
-		_o.doc.find('#checkDiamond').checked = false;
+		setCheck('checkDiamond',false,_o);
 	} else {
-		_o.chk.set('checkDiamond',true);
-		_o.doc.find('#checkDiamond').checked = true;
+		setCheck('checkDiamond',true,_o);
 	}
 }
 
@@ -373,7 +348,6 @@ $d.find('#getStart').on('click', function () {
 });
 
 function getCards(_o) {
-	// ?????? _chk
 	let _arr = [];
 
 	for (let i = 1 ; i < 53; i++) {
