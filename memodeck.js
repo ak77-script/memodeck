@@ -359,7 +359,6 @@ function setCheck(key, value, _o={}) {
 	_o.chk.set(key,value); _o.doc.find('#'+key).checked = value;
 }
 
-
 /*
 ===≠===============
     / form Checks
