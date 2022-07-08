@@ -304,11 +304,15 @@ function setSuitsRow(_o={}) {
 		setCheck('checkHeart',true,_o);
 	}*/
 	
+	(_club < 13) ? 
+	    setCheck('checkClub', false, _o) : setCheck(checkClub', true, _o);
+	
+	/*
 	if (_club < 13) {
 		setCheck('checkClub',false,_o);
 	} else {
 		setCheck('checkClub',true,_o);
-	}
+	}*/
 	
 	if (_diamond < 13) {
 		setCheck('checkDiamond',false,_o);
