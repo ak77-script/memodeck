@@ -359,6 +359,18 @@ function setCheck(key, value, _o={}) {
 	_o.chk.set(key,value); _o.doc.find('#'+key).checked = value;
 }
 
+function getCards(_o) {
+	let _arr = [];
+
+	for (let i = 1 ; i < 53; i++) {
+		let _key = 'check_card_' + i;
+		let _val = _o.chk.get(_key);
+		if (_val) _arr.push(i);
+	}
+	console.log(_arr); // для отладки
+	return _arr;
+}
+
 /*
 ===≠===============
     / form Checks
@@ -380,18 +392,6 @@ $d.find('#getStart').on('click', function () {
 	$d.find('#greetings').style['display'] = "none"; // "block"
 	$d.find('#card').style['display'] = "block";
 });
-
-function getCards(_o) {
-	let _arr = [];
-
-	for (let i = 1 ; i < 53; i++) {
-		let _key = 'check_card_' + i;
-		let _val = _o.chk.get(_key);
-		if (_val) _arr.push(i);
-	}
-	console.log(_arr); // для отладки
-	return _arr;
-}
 
 // original deck
 let origdeck = (function (onoff) {
