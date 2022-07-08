@@ -316,7 +316,6 @@ function setSuitsRow(_o={}) {
 	
 	
 	(_diamond < 13) ? 
-
 	    setCheck('checkDiamond', false, _o) : setCheck('checkDiamond', true, _o);
 	
 	/*
