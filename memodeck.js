@@ -98,7 +98,11 @@ for(let i = 1; i < 53; i++) $chk.set('check_card_' + i, true);
 
 $chk.forEach(function(value, key, map) {$d.find('#' + key).checked = value });
 
-// checks form
+/*
+===≠===============
+    form Checks
+===================
+*/
 const $frmChk = {doc: $d, chk: $chk, cards: $cards} 
 
 let $checkAll = $d.find('#checkAll');
@@ -263,11 +267,20 @@ function setCheckAll(_o={}) {
 
 function setRanksRow(_o={}) {
 	for (let i = 1; i < 14; i = i + 1) {
+	    
+	    (sumChecks(_o,0,i)<4) ? setCheck('check'+i, false, _o) : setCheck('check'+i, true, _o);
+	    /*
 		if (sumChecks(_o,0,i) < 4) {
 			setCheck('check'+i,false,_o);
 		} else {
 			setCheck('check'+i,true,_o);
-		}
+		}*/
+		/*
+let company = prompt('Какая компания создала JavaScript?', '');
+
+(company == 'Netscape') ?
+   alert('Верно!') : alert('Неправильно.');
+		*/
 	}
 }
 
@@ -277,29 +290,44 @@ function setSuitsRow(_o={}) {
 	let _club = sumChecks(_o,3);
 	let _diamond = sumChecks(_o,4);
 	
-	if (_spade < 13) {
+	(_spade < 13) ? 
+	    setCheck('checkSpade', false, _o) : setCheck('checkSpade', true, _o);
+	/*if (_spade < 13) {
 		setCheck('checkSpade',false,_o);
 	} else {
 		setCheck('checkSpade',true,_o);
-	}
+	}*/
 
+
+	(_heart < 13) ? 
+	    setCheck('checkHeart', false, _o) : setCheck('checkHeart', true, _o);
+	    /*
 	if (_heart < 13) {
 		setCheck('checkHeart',false,_o);
 	} else {
 		setCheck('checkHeart',true,_o);
-	}
+	}*/
 	
+	(_club < 13) ? 
+	    setCheck('checkClub', false, _o) : setCheck('checkClub', true, _o);
+	
+	/*
 	if (_club < 13) {
 		setCheck('checkClub',false,_o);
 	} else {
 		setCheck('checkClub',true,_o);
-	}
+	}*/
 	
+	
+	(_diamond < 13) ? 
+	    setCheck('checkDiamond', false, _o) : setCheck('checkDiamond', true, _o);
+	
+	/*
 	if (_diamond < 13) {
 		setCheck('checkDiamond',false,_o);
 	} else {
 		setCheck('checkDiamond',true,_o);
-	}
+	}*/
 }
 
 function sumChecks(_o={},suit = 0, rank = 0, value = 0) {
@@ -327,25 +355,9 @@ function sumChecks(_o={},suit = 0, rank = 0, value = 0) {
 	return sum;
 }
 
-function getRank(value) {
-	let rank = (value-1) % 13 + 1;
-	return rank;
-}
-
-function getSuit(value) {
-	let suit = (value-1) / 13 | 0;
-	return suit + 1;
-}
-
 function setCheck(key, value, _o={}) {
 	_o.chk.set(key,value); _o.doc.find('#'+key).checked = value;
 }
-
-// getStart
-$d.find('#getStart').on('click', function () {
-	$d.find('#greetings').style['display'] = "none"; // "block"
-	$d.find('#card').style['display'] = "block";
-});
 
 function getCards(_o) {
 	let _arr = [];
@@ -358,6 +370,28 @@ function getCards(_o) {
 	console.log(_arr); // для отладки
 	return _arr;
 }
+
+/*
+===≠===============
+    / form Checks
+===================
+*/
+
+function getRank(value) {
+	let rank = (value-1) % 13 + 1;
+	return rank;
+}
+
+function getSuit(value) {
+	let suit = (value-1) / 13 | 0;
+	return suit + 1;
+}
+
+// getStart
+$d.find('#getStart').on('click', function () {
+	$d.find('#greetings').style['display'] = "none"; // "block"
+	$d.find('#card').style['display'] = "block";
+});
 
 // original deck
 let origdeck = (function (onoff) {
