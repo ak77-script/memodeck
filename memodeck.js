@@ -182,7 +182,7 @@ let $checkDiamond = $d.find('#checkDiamond');
 $checkDiamond.on('click', clickDiamond, false);
 $checkDiamond.$p = $frmChk;
 
-//callback for click checkDiamond 
+//дзcallback for click checkDiamond 
 function clickDiamond(_e) {
 	let _o = _e.currentTarget.$p;
 
