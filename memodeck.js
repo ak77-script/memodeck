@@ -154,33 +154,19 @@ for (let _b = 1; _b < 14; _b++) {
 
     $checkRank.on('click', clickRank, false);
 
-    $frmChk._b = _b;
-
     $checkRank.$p = $frmChk;
-/*   
-	$d.find('#check'+_b).on('click',function(){
-		let _bool = !_chk.get('check'+_b);
-		_chk.set('check'+_b,_bool);
-		for (let i = _b; i < 53; i=i+13) {
-			setCheck('check_card_'+i,_bool);
-		}
-		setSuitsRow();
-		setCheckAll();
+	$checkRank._b = _b;
 
-		$cards = getCards(_chk);
-		
-	});*/
 }
 
 // callback for click check##
 function clickRank(_e) {
-    let _o = _e.currentTarget.$p;
-    
-    let _bool = !_o.chk.get('check'+_o._b);
+	let _o = _e.currentTarget.$p;
+	let _b = _e.currentTarget._b;
 
-	_o.chk.set('check'+_o._b,_bool);
-
-	for (let i = _o._b; i < 53; i=i+13) {
+    let _bool = !_o.chk.get('check'+_b);
+	_o.chk.set('check'+_b,_bool);
+	for (let i = _b; i < 53; i=i+13) {
 		setCheck('check_card_'+i,_bool);
 	}
 	setSuitsRow();
@@ -197,31 +183,18 @@ for (let i = 1; i < 53 ; i++ ) {
 
     $card.on('click', clickCard, false);
 
-    $frmChk._i = i;
-
-    $checkRank.$p = $frmChk;
-
-/*
-	let $card = $d.find('#check_card_'+ i);
-
-	$card.on('click',function(){
-		let _bool = !$chk.get('check_card_'+ i);
-		$chk.set('check_card_'+ i,_bool);
-		setSuitsNRanksRows(i);
-		setCheckAll();
-
-		$cards = getCards($chk);
-		
-	});*/
+    $card.$p = $frmChk;
+    $card._i = i;
 
 }
 
 function clickCard(_e) {
     let _o = _e.currentTarget.$p;
+	let _i = _e.currentTarget._i;
     
-	let _bool = !_o.chk.get('check_card_'+ o._i);
-	_o.chk.set('check_card_'+ _o._i,_bool);
-	setSuitsNRanksRows(_o._i);
+	let _bool = !_o.chk.get('check_card_'+ _i);
+	_o.chk.set('check_card_'+ _i,_bool);
+	setSuitsNRanksRows(_i);
 	setCheckAll();
 
 	_o.cards = getCards(_o.chk);
