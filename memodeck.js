@@ -1,5 +1,59 @@
 const origdeckon = true;
-const memodeckon = false;
+
+let _cards = {elts:[
+	{id:1,rankstr:'Т',rank:0,suit:0,code:'ПаТефон',image:''},
+	{id:2,rankstr:'2',rank:1,suit:0,code:'ПТица',image:''},
+	{id:3,rankstr:'3',rank:2,suit:0,code:'ПиКа',image:''},
+	{id:4,rankstr:'4',rank:3,suit:0,code:'ПеЧь',image:''},
+	{id:5,rankstr:'5',rank:4,suit:0,code:'ПиПетка',image:''},
+	{id:6,rankstr:'6',rank:5,suit:0,code:'ПуШка',image:''},
+	{id:7,rankstr:'7',rank:6,suit:0,code:'ПиСьмо',image:''},
+	{id:8,rankstr:'8',rank:7,suit:0,code:'ПиВо',image:''},
+	{id:9,rankstr:'9',rank:8,suit:0,code:'ПеРец',image:''},
+	{id:10,rankstr:'10',rank:9,suit:0,code:'ПуГовица',image:''},
+	{id:11,rankstr:'В',rank:10,suit:0,code:'ПаВлин',image:''},
+	{id:12,rankstr:'Д',rank:11,suit:0,code:'ПуДра',image:''},
+	{id:13,rankstr:'К',rank:12,suit:0,code:'ПаКет',image:''},
+	{id:14,rankstr:'Т',rank:0,suit:1,code:'ЧеТверть пиццы',image:''},
+	{id:15,rankstr:'2',rank:1,suit:1,code:'ЧуДо-йогурт',image:''},
+	{id:16,rankstr:'3',rank:2,suit:1,code:'ЧеХол',image:''},
+	{id:17,rankstr:'4',rank:3,suit:1,code:'ЧаЧа',image:''},
+	{id:18,rankstr:'5',rank:4,suit:1,code:'ЧеБурашка',image:''},
+	{id:19,rankstr:'6',rank:5,suit:1,code:'ЧаШка',image:''},
+	{id:20,rankstr:'7',rank:6,suit:1,code:'ЧаСы',image:''},
+	{id:21,rankstr:'8',rank:7,suit:1,code:'Черный Фен',image:''},
+	{id:22,rankstr:'9',rank:8,suit:1,code:'ЧеРешня',image:''},
+	{id:23,rankstr:'10',rank:9,suit:1,code:'ЧуГунок',image:''},
+	{id:24,rankstr:'В',rank:10,suit:1,code:'Чистая Вода',image:''},
+	{id:25,rankstr:'Д',rank:11,suit:1,code:'ЧуДовище',image:''},
+	{id:26,rankstr:'К',rank:12,suit:1,code:'ЧеК',image:''},
+	{id:27,rankstr:'Т',rank:0,suit:2,code:'аТТестат',image:''},
+	{id:28,rankstr:'2',rank:1,suit:2,code:'ТаТу',image:''},
+	{id:29,rankstr:'3',rank:2,suit:2,code:'ТКань',image:''},
+	{id:30,rankstr:'4',rank:3,suit:2,code:'ТаЧка',image:''},
+	{id:31,rankstr:'5',rank:4,suit:2,code:'ТюБик',image:''},
+	{id:32,rankstr:'6',rank:5,suit:2,code:'ТеЛефон',image:''},
+	{id:33,rankstr:'7',rank:6,suit:2,code:'ТиСки',image:''},
+	{id:34,rankstr:'8',rank:7,suit:2,code:'ТВикс',image:''},
+	{id:35,rankstr:'9',rank:8,suit:2,code:'ТаРакан',image:''},
+	{id:36,rankstr:'10',rank:9,suit:2,code:'ТяГач',image:''},
+	{id:37,rankstr:'В',rank:10,suit:2,code:'ТВ',image:''},
+	{id:38,rankstr:'Д',rank:11,suit:2,code:'эТюДник',image:''},
+	{id:39,rankstr:'К',rank:12,suit:2,code:'уТКа',image:''},
+	{id:40,rankstr:'Т',rank:0,suit:3,code:'БаТон',image:''},
+	{id:41,rankstr:'2',rank:1,suit:3,code:'БоТинки',image:''},
+	{id:42,rankstr:'3',rank:2,suit:3,code:'БоКал',image:''},
+	{id:43,rankstr:'4',rank:3,suit:3,code:'БоЧка',image:''},
+	{id:44,rankstr:'5',rank:4,suit:3,code:'БуБен',image:''},
+	{id:45,rankstr:'6',rank:5,suit:3,code:'БоЛт',image:''},
+	{id:46,rankstr:'7',rank:6,suit:3,code:'БуСы',image:''},
+	{id:47,rankstr:'8',rank:7,suit:3,code:'БиФштекс',image:''},
+	{id:48,rankstr:'9',rank:8,suit:3,code:'БуРатино',image:''},
+	{id:49,rankstr:'10',rank:9,suit:3,code:'Биг-мак',image:''},
+	{id:50,rankstr:'В',rank:10,suit:3,code:'БиВень',image:''},
+	{id:51,rankstr:'Д',rank:11,suit:3,code:'БиДон',image:''},
+	{id:52,rankstr:'К',rank:12,suit:3,code:'БуК',image:''}
+]};
 
 // alias for addEventListener
 EventTarget.prototype.on = EventTarget.prototype.addEventListener;
@@ -200,7 +254,7 @@ function clickCard(_e) {
 	_o.cards = getCards(_o.chk);
 } 
 
-function setSuitsNRanksRows(value){
+function setSuitsNRanksRows(value,_o={}){
 	let suit = getSuit(value);
 	let rank = getRank(value);
 
@@ -215,13 +269,13 @@ function setSuitsNRanksRows(value){
 	$d.find('#check'+rank).checked = sumRanks;
 }
 
-function setCheckAll() {
+function setCheckAll(_o={}) {
 	let sum = sumChecks() == 52 ? true : false;
 	$chk.set('checkAll',sum);
 	$d.find('#checkAll').checked = sum;
 }
 
-function setRanksRow() {
+function setRanksRow(_o={}) {
 	for (let i = 1; i < 14; i = i + 1) {
 		if (sumChecks(0,i) < 4) {
 			$chk.set('check'+i,false);
@@ -233,7 +287,7 @@ function setRanksRow() {
 	}
 }
 
-function setSuitsRow() {
+function setSuitsRow(_o{}) {
 	let _spade = sumChecks(1);
 	let _heart = sumChecks(2);
 	let _club = sumChecks(3);
@@ -272,7 +326,7 @@ function setSuitsRow() {
 	}
 }
 
-function sumChecks(suit = 0, rank = 0, value = 0) {
+function sumChecks(suit = 0, rank = 0, value = 0, _o={}) {
 	let sum = 0;
 
 	if (suit==0 && rank==0 && value == 0)  {
@@ -307,7 +361,7 @@ function getSuit(value) {
 	return suit + 1;
 }
 
-function setCheck(key, value) {
+function setCheck(key, value, _o={}) {
 	$chk.set(key,value); $d.find('#'+key).checked = value;
 }
 
@@ -318,6 +372,7 @@ $d.find('#getStart').on('click', function () {
 });
 
 function getCards(_chk) {
+	// ?????? _chk
 	let _arr = [];
 
 	for (let i = 1 ; i < 53; i++) {
@@ -488,80 +543,3 @@ let origdeck = (function (onoff) {
 
 
 })(origdeckon);
-
-/*
- * javascript модуль
- */
-
-// https://developer.mozilla.org/ru/docs/Web/JavaScript/Guide/Functions
- 
-let memodeck = (function (onoff) {
-	
-	function memodeck() {
-		// инициализация
-		let self = this;
-
-		let _cards = {elts:[
-			{id:1,rank:'Т',suit:0,code:'ПаТефон',image:''},
-			{id:2,rank:'2',suit:0,code:'ПТица',image:''},
-			{id:3,rank:'3',suit:0,code:'ПиКа',image:''},
-			{id:4,rank:'4',suit:0,code:'ПеЧь',image:''},
-			{id:5,rank:'5',suit:0,code:'ПиПетка',image:''},
-			{id:6,rank:'6',suit:0,code:'ПуШка',image:''},
-			{id:7,rank:'7',suit:0,code:'ПиСьмо',image:''},
-			{id:8,rank:'8',suit:0,code:'ПиВо',image:''},
-			{id:9,rank:'9',suit:0,code:'ПеРец',image:''},
-			{id:10,rank:'10',suit:0,code:'ПуГовица',image:''},
-			{id:11,rank:'В',suit:0,code:'ПаВлин',image:''},
-			{id:12,rank:'Д',suit:0,code:'ПуДра',image:''},
-			{id:13,rank:'К',suit:0,code:'ПаКет',image:''},
-			{id:14,rank:'Т',suit:1,code:'ЧеТверть пиццы',image:''},
-			{id:15,rank:'2',suit:1,code:'ЧуДо-йогурт',image:''},
-			{id:16,rank:'3',suit:1,code:'ЧеХол',image:''},
-			{id:17,rank:'4',suit:1,code:'ЧаЧа',image:''},
-			{id:18,rank:'5',suit:1,code:'ЧеБурашка',image:''},
-			{id:19,rank:'6',suit:1,code:'ЧаШка',image:''},
-			{id:20,rank:'7',suit:1,code:'ЧаСы',image:''},
-			{id:21,rank:'8',suit:1,code:'Черный Фен',image:''},
-			{id:22,rank:'9',suit:1,code:'ЧеРешня',image:''},
-			{id:23,rank:'10',suit:1,code:'ЧуГунок',image:''},
-			{id:24,rank:'В',suit:1,code:'Чистая Вода',image:''},
-			{id:25,rank:'Д',suit:1,code:'ЧуДовище',image:''},
-			{id:26,rank:'К',suit:1,code:'ЧеК',image:''},
-			{id:27,rank:'Т',suit:2,code:'аТТестат',image:''},
-			{id:28,rank:'2',suit:2,code:'ТаТу',image:''},
-			{id:29,rank:'3',suit:2,code:'ТКань',image:''},
-			{id:30,rank:'4',suit:2,code:'ТаЧка',image:''},
-			{id:31,rank:'5',suit:2,code:'ТюБик',image:''},
-			{id:32,rank:'6',suit:2,code:'ТеЛефон',image:''},
-			{id:33,rank:'7',suit:2,code:'ТиСки',image:''},
-			{id:34,rank:'8',suit:2,code:'ТВикс',image:''},
-			{id:35,rank:'9',suit:2,code:'ТаРакан',image:''},
-			{id:36,rank:'10',suit:2,code:'ТяГач',image:''},
-			{id:37,rank:'В',suit:2,code:'ТВ',image:''},
-			{id:38,rank:'Д',suit:2,code:'эТюДник',image:''},
-			{id:39,rank:'К',suit:2,code:'уТКа',image:''},
-			{id:40,rank:'Т',suit:3,code:'БаТон',image:''},
-			{id:41,rank:'2',suit:3,code:'БоТинки',image:''},
-			{id:42,rank:'3',suit:3,code:'БоКал',image:''},
-			{id:43,rank:'4',suit:3,code:'БоЧка',image:''},
-			{id:44,rank:'5',suit:3,code:'БуБен',image:''},
-			{id:45,rank:'6',suit:3,code:'БоЛт',image:''},
-			{id:46,rank:'7',suit:3,code:'БуСы',image:''},
-			{id:47,rank:'8',suit:3,code:'БиФштекс',image:''},
-			{id:48,rank:'9',suit:3,code:'БуРатино',image:''},
-			{id:49,rank:'10',suit:3,code:'Биг-мак',image:''},
-			{id:50,rank:'В',suit:3,code:'БиВень',image:''},
-			{id:51,rank:'Д',suit:3,code:'БиДон',image:''},
-			{id:52,rank:'К',suit:3,code:'БуК',image:''}
-		]};
-		
-		return self;
-	}
-
-	if (onoff) {
-		let md = memodeck();
-	}
-	
-	return memodeck;
-})(memodeckon);
