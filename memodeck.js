@@ -287,7 +287,7 @@ function setRanksRow(_o={}) {
 	}
 }
 
-function setSuitsRow(_o{}) {
+function setSuitsRow(_o={}) {
 	let _spade = sumChecks(1);
 	let _heart = sumChecks(2);
 	let _club = sumChecks(3);
